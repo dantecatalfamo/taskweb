@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Headings</h1>
+
+<div id="headings">
+  <% @headings.each do |heading| %>
+    <%= render heading %>
+  <% end %>
+</div>
+
+<%= render "form", heading: Heading.new, parent_id: nil %>
+<%= link_to "New heading", new_heading_path %>

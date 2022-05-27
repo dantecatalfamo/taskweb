@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @heading %>
+
+<%= render "form", heading: Heading.new, parent_id: @heading.id %>
+
+<div>
+  <%= link_to "Edit this heading", edit_heading_path(@heading) %> |
+  <%= link_to "Back to headings", headings_path %>
+
+  <%= button_to "Destroy this heading", @heading, method: :delete %>
+</div>

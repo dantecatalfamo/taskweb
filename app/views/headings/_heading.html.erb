@@ -1,0 +1,32 @@
+<div id="<%= dom_id heading %>" style="padding-left: 10px; border-left: 3px solid <%= depth_color(heading.depth) %>; border-radius: 5px">
+  <strong>
+    <% if heading.status.present? %>
+      <%= heading.status %>
+    <% end %>
+    <%= link_to heading.title, heading %>
+  </strong>
+  <%= link_to "edit", edit_heading_path(heading) %>
+  <%= button_to "delete", heading, method: :delete, form: { style: "display: inline-block" }, data: { turbo_confirm: 'message' } %>
+
+  <div>
+    <% if heading.deadline %>
+      <p>
+        <strong>Deadline:</strong>
+        <%= heading.deadline %>
+      </p>
+    <% end %>
+
+    <% if heading.scheduled %>
+      <p>
+        <strong>Scheduled:</strong>
+        <%= heading.scheduled %>
+      </p>
+    <% end %>
+
+    <p style="white-space: pre-wrap"><%= heading.body %></p>
+    
+    <% heading.headings.each do |child| %>
+      <%= render child %>
+    <% end %>
+  </div>
+</div>
