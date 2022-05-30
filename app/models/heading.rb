@@ -10,7 +10,7 @@ class Heading < ApplicationRecord
   protected
 
   def fix_children_depth
-    return unless saved_change_to_depth? || saved_change_to_parent?
+    return unless saved_change_to_depth? || saved_change_to_parent_id?
 
     headings.each do |child|
       if child.depth != depth + 1
