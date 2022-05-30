@@ -1,45 +1,47 @@
-<div id="<%= dom_id heading %>" data-controller="heading" data-heading-id-value="<%= heading.id %>" style="padding-left: 10px; padding-bottom: 10px; margin-bottom: 10px; border-left: 3px solid <%= depth_color(heading.depth) %>; border-radius: 5px">
-  <details data-heading-target="details" data-action="heading#toggle">
-    <summary>
-      <strong>
-        <% if heading.status.present? %>
-          <%= heading.status %>
+<turbo-frame id="<%= dom_id heading %>">
+  <div data-controller="heading" data-heading-id-value="<%= heading.id %>" style="padding-left: 10px; padding-bottom: 10px; margin-bottom: 10px; border-left: 3px solid <%= depth_color(heading.depth) %>; border-radius: 5px">
+    <details data-heading-target="details" data-action="heading#toggle">
+      <summary>
+        <strong>
+          <% if heading.status.present? %>
+            <%= heading.status %>
+          <% end %>
+          <%= link_to heading.title, heading %>
+        </strong>
+        <small>
+          (<%= heading.headings.size %>)
+        </small>
+        <%= link_to "edit", edit_heading_path(heading) %>
+        <%= button_to "delete", heading, method: :delete, style: "line-height: 1.1; border-radius: 4px", form: { style: "display: inline-block", data: { turbo_confirm: "Delete heading \"#{heading.title}\" and all its sub-headings?" } } %>
+      </summary>
+      <div>
+        <% if heading.deadline %>
+          <p>
+            <strong>Deadline:</strong>
+            <%= heading.deadline %>
+          </p>
         <% end %>
-        <%= link_to heading.title, heading %>
-      </strong>
-      <small>
-        (<%= heading.headings.size %>)
-      </small>
-      <%= link_to "edit", edit_heading_path(heading) %>
-      <%= button_to "delete", heading, method: :delete, style: "line-height: 1.1; border-radius: 4px", form: { style: "display: inline-block", data: { turbo_confirm: "Delete heading \"#{heading.title}\" and all its sub-headings?" } } %>
-    </summary>
-    <div>
-      <% if heading.deadline %>
-        <p>
-          <strong>Deadline:</strong>
-          <%= heading.deadline %>
-        </p>
-      <% end %>
 
-      <% if heading.scheduled %>
-        <p>
-          <strong>Scheduled:</strong>
-          <%= heading.scheduled %>
-        </p>
-      <% end %>
+        <% if heading.scheduled %>
+          <p>
+            <strong>Scheduled:</strong>
+            <%= heading.scheduled %>
+          </p>
+        <% end %>
 
-      <p style="white-space: pre-wrap"><%= heading.body %></p>
-      
-      <% heading.headings.each do |child| %>
-        <%= render child %>
-      <% end %>
+        <p style="white-space: pre-wrap"><%= heading.body %></p>
+        
+        <% heading.headings.each do |child| %>
+          <%= render child %>
+        <% end %>
 
-      <%= form_with(model: Heading.new) do |form| %>
-        <%= form.text_field :title, placeholder: '+', style: 'border: none' %>
-        <%= form.hidden_field :parent_id, value: heading.id %>
-      <% end %>
-    </div>
+        <%= form_with(model: Heading.new) do |form| %>
+          <%= form.text_field :title, placeholder: '+', style: 'border: none' %>
+          <%= form.hidden_field :parent_id, value: heading.id %>
+        <% end %>
+      </div>
 
-  </details>
+    </details>
 
-</div>
+  </div>
+</turbo-frame>

@@ -1,6 +1,8 @@
 <h1>Editing heading</h1>
 
-<%= render "form", heading: @heading, parent_id: nil %>
+<turbo-frame id="<%= dom_id @heading %>">
+  <%= render "form", heading: @heading, parent_id: @heading.parent.nil? ? nil : @heading.parent.id %>
+</turbo-frame>
 
 <br>
 

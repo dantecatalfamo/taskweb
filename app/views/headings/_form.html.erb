@@ -15,25 +15,20 @@
     <%= form.text_field :title, placeholder: "Title" %>
   </div>
 
-  <details>
-    <summary>
-      Additional
-    </summary>
-    <div>
-      <%= form.label :status %>
-      <%= form.text_field :status %>
-    </div>
+  <div>
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
 
-    <div>
-      <%= form.label :deadline %>
-      <%= form.datetime_field :deadline %>
-    </div>
+  <div>
+    <%= form.label :deadline %>
+    <%= form.datetime_field :deadline %>
+  </div>
 
-    <div>
-      <%= form.label :scheduled %>
-      <%= form.datetime_field :scheduled %>
-    </div>
-  </details>
+  <div>
+    <%= form.label :scheduled %>
+    <%= form.datetime_field :scheduled %>
+  </div>
 
   <div>
     <%= form.text_area :body, placeholder: "Body" %>
@@ -43,5 +38,6 @@
 
   <div>
     <%= form.submit %>
+    <%= link_to "cancel", heading %>
   </div>
 <% end %>
