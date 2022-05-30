@@ -25,7 +25,8 @@ class HeadingsController < ApplicationController
 
     respond_to do |format|
       if @heading.save
-        format.html { redirect_to heading_url(@heading), notice: "Heading was successfully created." }
+        redirect_location = request.referrer.present? ? request.referrer : heading_url(@heading)
+        format.html { redirect_to redirect_location, notice: "Heading was successfully created." }
         format.json { render :show, status: :created, location: @heading }
       else
         format.html { render :new, status: :unprocessable_entity }

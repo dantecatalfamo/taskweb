@@ -144,6 +144,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-mini-profiler (3.0.0)
+      rack (>= 1.2.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.3)
@@ -237,6 +239,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   puma (~> 5.0)
+  rack-mini-profiler
   rails (~> 7.0.3)
   sassc-rails
   selenium-webdriver

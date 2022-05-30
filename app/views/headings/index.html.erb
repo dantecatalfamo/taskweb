@@ -8,5 +8,7 @@
   <% end %>
 </div>
 
-<%= render "form", heading: Heading.new, parent_id: nil %>
-<%= link_to "New heading", new_heading_path %>
+<%= form_with(model: Heading.new) do |form| %>
+  <%= form.text_field :title, placeholder: '+', style: 'border: none' %>
+  <%= form.hidden_field :parent_id, value: nil %>
+<% end %>

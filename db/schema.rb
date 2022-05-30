@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_27_145202) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_031912) do
   create_table "headings", force: :cascade do |t|
     t.string "title"
     t.string "body"
@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_145202) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
+    t.integer "depth"
+    t.integer "headings_count"
     t.index ["parent_id"], name: "index_headings_on_parent_id"
   end
 
