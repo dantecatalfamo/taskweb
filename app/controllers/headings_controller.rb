@@ -10,7 +10,7 @@ class HeadingsController < ApplicationController
   def show
     @breadcrumbs = []
     @breadcrumbs << @heading
-    while !@breadcrumbs.last.parent.nil?
+    while @breadcrumbs.last.parent
       @breadcrumbs << @breadcrumbs.last.parent
     end
     @breadcrumbs.reverse!
