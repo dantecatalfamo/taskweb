@@ -37,7 +37,7 @@
         <% end %>
 
         <%= form_with(model: Heading.new) do |form| %>
-          <%= form.text_field :title, placeholder: '+', style: 'border: none' %>
+          <%= form.text_field :title, placeholder: '+', style: 'border: none', autocomplete: 'off' %>
           <%= form.hidden_field :parent_id, value: heading.id %>
         <% end %>
       </div>
