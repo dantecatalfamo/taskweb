@@ -1,18 +1,19 @@
 <turbo-frame id="<%= dom_id heading %>">
-  <div data-controller="heading" data-heading-id-value="<%= heading.id %>" style="padding-left: 10px; padding-bottom: 10px; margin-bottom: 10px; border-left: 3px solid <%= depth_color(heading.depth) %>; border-radius: 5px">
+  <div data-controller="heading" data-heading-id-value="<%= heading.id %>" class="pb-2 ps-2 mb-2 rounded-start" style="border-left: 3px solid <%= depth_color(heading.depth) %>">
     <details data-heading-target="details" data-action="heading#toggle">
       <summary>
         <strong>
           <% if heading.status.present? %>
             <%= heading.status %>
           <% end %>
-          <%= link_to heading.title, heading %>
+          <%= heading.title %>
         </strong>
         <small>
           (<%= heading.headings.size %>)
         </small>
-        <%= link_to "edit", edit_heading_path(heading) %>
-        <%= button_to "delete", heading, method: :delete, style: "line-height: 1.1; border-radius: 4px", form: { style: "display: inline-block", data: { turbo_confirm: "Delete heading \"#{heading.title}\" and all its sub-headings?" } } %>
+        <%= link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_heading_path(heading) %>
+        <%= link_to '<i class="bi bi-arrows-angle-expand"></i>'.html_safe, heading, target: "_top" %>
+        <%= link_to '<i class="bi bi-x-lg"></i>'.html_safe, heading, class: "text-danger", data: { turbo_method: :delete, turbo_confirm: "Delete heading \"#{heading.title}\" and all its sub-headings?" } %>
       </summary>
       <div>
         <% if heading.deadline %>

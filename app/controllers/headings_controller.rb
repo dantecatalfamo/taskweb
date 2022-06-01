@@ -8,6 +8,12 @@ class HeadingsController < ApplicationController
 
   # GET /headings/1 or /headings/1.json
   def show
+    @breadcrumbs = []
+    @breadcrumbs << @heading
+    while !@breadcrumbs.last.parent.nil?
+      @breadcrumbs << @breadcrumbs.last.parent
+    end
+    @breadcrumbs.reverse!
   end
 
   # GET /headings/new

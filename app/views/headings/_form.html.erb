@@ -1,43 +1,60 @@
-<%= form_with(model: heading) do |form| %>
-  <% if heading.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(heading.errors.count, "error") %> prohibited this heading from being saved:</h2>
+<div class="mb-3" style="width: 350px">
+  
+  <%= form_with(model: heading) do |form| %>
+    <% if heading.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(heading.errors.count, "error") %> prohibited this heading from being saved:</h2>
 
-      <ul>
-        <% heading.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% heading.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row mb-2">
+      <div class="col">
+        <%= form.text_field :title, placeholder: "Title", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col">
+        <%= form.label :status, class: "col-form-label" %>
+      </div>
+      <div class="col-auto">
+        <%= form.text_field :status, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col">
+        <%= form.label :deadline, class: "col-form-label" %>
+      </div>
+      <div class="col-auto">
+        <%= form.datetime_field :deadline, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col">
+        <%= form.label :scheduled, class: "col-form-label" %>
+      </div>
+      <div class="col-auto">
+        <%= form.datetime_field :scheduled, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <%= form.text_area :body, placeholder: "Body", class: "form-control", rows: 10 %>
+    </div>
+
+    <%= form.hidden_field :parent_id, value: parent_id %>
+
+    <div>
+      <%= form.submit class: "btn btn-primary" %>
+      <%= link_to "Cancel", heading, class: 'btn btn-secondary' %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.text_field :title, placeholder: "Title" %>
-  </div>
-
-  <div>
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div>
-    <%= form.label :deadline %>
-    <%= form.datetime_field :deadline %>
-  </div>
-
-  <div>
-    <%= form.label :scheduled %>
-    <%= form.datetime_field :scheduled %>
-  </div>
-
-  <div>
-    <%= form.text_area :body, placeholder: "Body" %>
-  </div>
-
-  <%= form.hidden_field :parent_id, value: parent_id %>
-
-  <div>
-    <%= form.submit %>
-    <%= link_to "cancel", heading %>
-  </div>
-<% end %>
+</div>
