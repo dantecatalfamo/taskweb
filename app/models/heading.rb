@@ -7,17 +7,21 @@ class Heading < ApplicationRecord
 
   scope :top_level, -> { where(parent: nil) }
 
+  def dates?
+    !!(deadline || scheduled)
+  end
+
   protected
 
   def fix_children_depth
     return unless saved_change_to_depth? || saved_change_to_parent_id?
 
     headings.each do |child|
-      if child.depth != depth + 1
-        child.depth = depth + 1
-        child.save!
-        child.fix_children_depth
-      end
+      next unless child.depth != depth + 1
+
+      child.depth = depth + 1
+      child.save!
+      child.fix_children_depth
     end
   end
 

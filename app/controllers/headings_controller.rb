@@ -1,5 +1,5 @@
 class HeadingsController < ApplicationController
-  before_action :set_heading, only: %i[ show edit update destroy ]
+  before_action :set_heading, only: %i[show edit update destroy]
 
   # GET /headings or /headings.json
   def index
@@ -10,9 +10,7 @@ class HeadingsController < ApplicationController
   def show
     @breadcrumbs = []
     @breadcrumbs << @heading
-    while @breadcrumbs.last.parent
-      @breadcrumbs << @breadcrumbs.last.parent
-    end
+    @breadcrumbs << @breadcrumbs.last.parent while @breadcrumbs.last.parent
     @breadcrumbs.reverse!
   end
 
@@ -22,8 +20,7 @@ class HeadingsController < ApplicationController
   end
 
   # GET /headings/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /headings or /headings.json
   def create
@@ -32,7 +29,7 @@ class HeadingsController < ApplicationController
     respond_to do |format|
       if @heading.save
         redirect_location = request.referrer.present? ? request.referrer : heading_url(@heading)
-        format.html { redirect_to redirect_location, notice: "Heading was successfully created." }
+        format.html { redirect_to redirect_location, notice: 'Heading was successfully created.' }
         format.json { render :show, status: :created, location: @heading }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,7 +42,7 @@ class HeadingsController < ApplicationController
   def update
     respond_to do |format|
       if @heading.update(heading_params)
-        format.html { redirect_to heading_url(@heading), notice: "Heading was successfully updated." }
+        format.html { redirect_to heading_url(@heading), notice: 'Heading was successfully updated.' }
         format.json { render :show, status: :ok, location: @heading }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,19 +56,20 @@ class HeadingsController < ApplicationController
     @heading.destroy
 
     respond_to do |format|
-      format.html { redirect_to headings_url, notice: "Heading was successfully destroyed." }
+      format.html { redirect_to headings_url, notice: 'Heading was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_heading
-      @heading = Heading.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def heading_params
-      params.require(:heading).permit(:title, :body, :status, :deadline, :scheduled, :parent_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_heading
+    @heading = Heading.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def heading_params
+    params.require(:heading).permit(:title, :body, :status, :deadline, :scheduled, :parent_id)
+  end
 end
