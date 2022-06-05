@@ -1,0 +1,12 @@
+<div>
+  <strong><%= link_to heading.title, heading %></strong>
+  <div>
+    <% if heading.deadline %>
+      Deadline: <%= heading.deadline %>
+    <% elsif heading.scheduled %>
+      Scheduled: <%= heading.scheduled %>
+    <% else %>
+      Not supposed to be here
+    <% end %>
+  </div>
+</div>

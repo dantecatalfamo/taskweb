@@ -22,6 +22,10 @@ class HeadingsController < ApplicationController
   # GET /headings/1/edit
   def edit; end
 
+  def agenda
+    @headings = Heading.dates
+  end
+
   # POST /headings or /headings.json
   def create
     @heading = Heading.new(heading_params)
