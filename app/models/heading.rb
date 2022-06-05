@@ -6,6 +6,9 @@ class Heading < ApplicationRecord
   after_save :fix_children_depth
 
   scope :top_level, -> { where(parent: nil) }
+  scope :deadlines, -> { where.not(deadline: nil) }
+  scope :schedules, -> { where.not(scheduled: nil) }
+  scope :dates,     -> { where.not(deadline: nil).or(where.not(scheduled: nil)) }
 
   def dates?
     !!(deadline || scheduled)
