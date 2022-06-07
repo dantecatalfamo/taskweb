@@ -1,6 +1,6 @@
 <h1>Editing heading</h1>
 
-<turbo-frame id="<%= dom_id @heading %>">
+<%= turbo_frame_tag @heading do %>
   <div style="padding-left: 10px; padding-bottom: 10px; margin-bottom: 10px; border-left: 3px solid <%= depth_color(@heading.depth) %>; border-radius: 5px">
     
     <%= render "form", heading: @heading, parent_id: @heading.parent.nil? ? nil : @heading.parent.id %>
@@ -8,7 +8,7 @@
       <%= render child %>
     <% end %>
   </div>
-</turbo-frame>
+<% end %>
 
 <br>
 
