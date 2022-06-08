@@ -45,4 +45,9 @@ class HeadingsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to headings_url
   end
+
+  test "should get agenda" do
+    get agenda_url
+    assert_response :success
+  end
 end

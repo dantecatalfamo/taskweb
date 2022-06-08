@@ -23,4 +23,14 @@ three:
   parent: one
   deadline: 2022-05-27 10:44:21
   scheduled: 2022-05-27 10:44:21
-  depth: 1
+  depth: 2
+
+four:
+  title: MyString
+  body: MyString
+  status: MyString
+  parent: one
+  deadline: nil
+  scheduled: nil
+  depth: 2
+
