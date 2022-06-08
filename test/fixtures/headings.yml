@@ -6,6 +6,7 @@ one:
   status: MyString
   deadline: 2022-05-27 10:44:21
   scheduled: 2022-05-27 10:44:21
+  depth: 1
 
 two:
   title: MyString
@@ -13,3 +14,13 @@ two:
   status: MyString
   deadline: 2022-05-27 10:44:21
   scheduled: 2022-05-27 10:44:21
+  depth: 2
+
+three:
+  title: MyString
+  body: MyString
+  status: MyString
+  parent: one
+  deadline: 2022-05-27 10:44:21
+  scheduled: 2022-05-27 10:44:21
+  depth: 1

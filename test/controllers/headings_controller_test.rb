@@ -2,7 +2,7 @@ require "test_helper"
 
 class HeadingsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @heading = headings(:one)
+    @heading = headings(:three)
   end
 
   test "should get index" do
