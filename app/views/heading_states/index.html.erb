@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Heading states</h1>
+
+<div id="heading_states">
+  <% @heading_states.each do |heading_state| %>
+    <%= render heading_state %>
+    <p>
+      <%= link_to "Show this heading state", heading_state %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New heading state", new_heading_state_path %>

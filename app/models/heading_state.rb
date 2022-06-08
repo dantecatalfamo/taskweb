@@ -1,0 +1,2 @@
+class HeadingState < ApplicationRecord
+end
