@@ -3,7 +3,13 @@
 todo:
   name: TODO
   done: false
+  color: '#e01b24'
+
+wip:
+  name: WIP
+  done: false
 
 done:
   name: DONE
   done: true
+  color: '#26a269'
