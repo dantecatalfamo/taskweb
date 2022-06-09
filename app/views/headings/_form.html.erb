@@ -50,7 +50,7 @@
       <%= form.text_area :body, placeholder: "Body", class: "form-control", rows: 10, data: { controller: "heading-textarea", action: "keyup->heading-textarea#processInput" } %>
     </div>
 
-    <%= form.hidden_field :parent_id, value: parent_id %>
+    <%= form.hidden_field :parent_id %>
 
     <div>
       <%= form.submit class: "btn btn-primary" %>
