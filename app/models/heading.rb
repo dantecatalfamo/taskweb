@@ -6,10 +6,13 @@ class Heading < ApplicationRecord
   before_save :set_depth
   after_save :fix_children_depth
 
-  scope :top_level, -> { where(parent: nil) }
-  scope :deadlines, -> { where.not(deadline: nil) }
-  scope :schedules, -> { where.not(scheduled: nil) }
-  scope :dates,     -> { where.not(deadline: nil).or(where.not(scheduled: nil)) }
+  scope :top_level,  -> { where(parent: nil) }
+  scope :deadlines,  -> { where.not(deadline: nil) }
+  scope :schedules,  -> { where.not(scheduled: nil) }
+  scope :dates,      -> { where.not(deadline: nil).or(where.not(scheduled: nil)) }
+  scope :done,       -> { joins(:state).where(state: { done: true }) }
+  scope :not_done,   -> { joins(:state).where(state: { done: false }) }
+  scope :unfinished, -> { dates.not_done }
 
   def dates?
     !!(deadline || scheduled)
