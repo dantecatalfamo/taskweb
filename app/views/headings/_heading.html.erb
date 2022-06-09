@@ -3,13 +3,13 @@
     <details data-heading-target="details" data-action="heading#toggle">
       <summary>
         <strong>
-          <% if heading.status.present? %>
-            <%= heading.status %>
+          <% if heading.state %>
+            <%= heading.state.name %>
           <% end %>
           <%= heading.title %>
         </strong>
         <small>
-          (<%= heading.headings.size %>)
+          (<%= heading.children.size %>)
         </small>
         <%= link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_heading_path(heading) %>
         <%= link_to '<i class="bi bi-arrows-angle-expand"></i>'.html_safe, heading, target: "_top" %>
@@ -32,7 +32,7 @@
 
         <p style="white-space: pre-wrap"><%= heading.body %></p>
         
-        <% heading.headings.each do |child| %>
+        <% heading.children.each do |child| %>
           <%= render child %>
         <% end %>
 

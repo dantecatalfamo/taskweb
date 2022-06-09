@@ -21,10 +21,10 @@
 
     <div class="row mb-2">
       <div class="col">
-        <%= form.label :status, class: "col-form-label" %>
+        <%= form.label :heading_state_id, class: "col-form-label" %>
       </div>
       <div class="col-auto">
-        <%= form.text_field :status, class: "form-control" %>
+        <%= form.collection_select :heading_state_id, HeadingState.all, :id, :name, include_blank: true, class: "form-control" %>
       </div>
     </div>
 

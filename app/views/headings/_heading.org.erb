@@ -1,3 +1,3 @@
-<%= '*' * heading.depth %> <%= "#{heading.status} ".html_safe if heading.status.present? %><%= heading.title.html_safe %>
+<%= '*' * heading.depth %> <%= "#{heading.state.name} ".html_safe if heading.state %><%= heading.title.html_safe %>
 <%= (depth_spaces(heading.depth, deadline_scheduled_line(heading)) + "\n").html_safe if heading.dates? %><%= (depth_spaces(heading.depth, heading.body).chomp + "\n").html_safe if heading.body %>
-<%= render heading.headings -%>
+<%= render heading.children -%>

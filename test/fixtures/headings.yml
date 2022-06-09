@@ -3,7 +3,6 @@
 one:
   title: MyString
   body: MyString
-  status: MyString
   deadline: 2022-05-27 10:44:21
   scheduled: 2022-05-27 10:44:21
   depth: 1
@@ -11,7 +10,7 @@ one:
 two:
   title: MyString
   body: MyString
-  status: MyString
+  state: todo
   deadline: 2022-05-27 10:44:21
   scheduled: 2022-05-27 10:44:21
   depth: 2
@@ -19,7 +18,7 @@ two:
 three:
   title: MyString
   body: MyString
-  status: MyString
+  state: todo
   parent: one
   deadline: 2022-05-27 10:44:21
   scheduled: 2022-05-27 10:44:21
@@ -28,7 +27,7 @@ three:
 four:
   title: MyString
   body: MyString
-  status: MyString
+  state: done
   parent: one
   deadline: nil
   scheduled: nil

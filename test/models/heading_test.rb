@@ -5,4 +5,8 @@ class HeadingTest < ActiveSupport::TestCase
     assert headings(:one).dates?
     assert_not headings(:four).dates?
   end
+
+  test "should create empty heading" do
+    assert Heading.new.save
+  end
 end

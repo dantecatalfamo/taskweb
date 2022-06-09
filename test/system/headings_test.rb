@@ -17,7 +17,7 @@ class HeadingsTest < ApplicationSystemTestCase
     fill_in "Body", with: @heading.body
     fill_in "Deadline", with: @heading.deadline
     fill_in "Scheduled", with: @heading.scheduled
-    fill_in "Status", with: @heading.status
+    fill_in "State", with: @heading.state
     fill_in "Title", with: @heading.title
     click_on "Create Heading"
 
@@ -32,7 +32,7 @@ class HeadingsTest < ApplicationSystemTestCase
     fill_in "Body", with: @heading.body
     fill_in "Deadline", with: @heading.deadline
     fill_in "Scheduled", with: @heading.scheduled
-    fill_in "Status", with: @heading.status
+    fill_in "State", with: @heading.state
     fill_in "Title", with: @heading.title
     click_on "Update Heading"
 

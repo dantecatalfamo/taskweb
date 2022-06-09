@@ -2,7 +2,7 @@ require "test_helper"
 
 class HeadingStatesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @heading_state = heading_states(:one)
+    @heading_state = heading_states(:todo)
   end
 
   test "should get index" do

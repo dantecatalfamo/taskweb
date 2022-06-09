@@ -1,6 +1,7 @@
 class Heading < ApplicationRecord
   belongs_to :parent, class_name: 'Heading', foreign_key: :parent_id, required: false, counter_cache: true
-  has_many :headings, class_name: 'Heading', foreign_key: :parent_id, dependent: :destroy
+  belongs_to :state, class_name: 'HeadingState', foreign_key: :heading_state_id, required: false
+  has_many :children, class_name: 'Heading', foreign_key: :parent_id, dependent: :destroy
 
   before_save :set_depth
   after_save :fix_children_depth
@@ -19,7 +20,7 @@ class Heading < ApplicationRecord
   def fix_children_depth
     return unless saved_change_to_depth? || saved_change_to_parent_id?
 
-    headings.each do |child|
+    children.each do |child|
       next unless child.depth != depth + 1
 
       child.depth = depth + 1

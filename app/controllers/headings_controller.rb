@@ -74,6 +74,6 @@ class HeadingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def heading_params
-    params.require(:heading).permit(:title, :body, :status, :deadline, :scheduled, :parent_id)
+    params.require(:heading).permit(:title, :body, :status, :deadline, :scheduled, :parent_id, :heading_state_id)
   end
 end
