@@ -65,6 +65,6 @@ class HeadingStatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def heading_state_params
-      params.require(:heading_state).permit(:name, :done)
+      params.require(:heading_state).permit(:name, :done, :color)
     end
 end

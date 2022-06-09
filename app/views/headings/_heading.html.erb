@@ -4,7 +4,7 @@
       <summary>
         <strong>
           <% if heading.state %>
-            <%= heading.state.name %>
+            <span style="color: <%= heading.state.color %>"><%= heading.state.name %></span>
           <% end %>
           <%= heading.title %>
         </strong>

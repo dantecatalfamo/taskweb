@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_08_043233) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_09_054429) do
   create_table "heading_states", force: :cascade do |t|
     t.string "name"
     t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color"
   end
 
   create_table "headings", force: :cascade do |t|
