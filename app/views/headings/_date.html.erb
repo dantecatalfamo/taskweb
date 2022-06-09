@@ -1,5 +1,10 @@
 <div>
-  <strong><%= link_to heading.title, heading %></strong>
+  <strong>
+    <% if heading.state %>
+      <span style="color: <%= heading.state.color %>"><%= heading.state.name %></span>
+    <% end %>
+    <%= link_to heading.title, heading %>
+  </strong>
   <div>
     <% if heading.deadline %>
       <strong>Deadline:</strong> <%= heading.deadline %>

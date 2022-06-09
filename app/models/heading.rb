@@ -12,7 +12,10 @@ class Heading < ApplicationRecord
   scope :dates,      -> { where.not(deadline: nil).or(where.not(scheduled: nil)) }
   scope :done,       -> { joins(:state).where(state: { done: true }) }
   scope :not_done,   -> { joins(:state).where(state: { done: false }) }
-  scope :unfinished, -> { dates.not_done }
+  scope :todo,       -> { where.not(state: nil) }
+  scope :not_todo,   -> { where(state: nil) }
+  scope :not_todo_or_done, -> { left_joins(:state).where(state: nil).or(where(state: { done: false })) }
+  scope :dates_not_done, -> { dates.not_todo_or_done }
 
   def dates?
     !!(deadline || scheduled)
