@@ -16,6 +16,7 @@ class Heading < ApplicationRecord
   scope :not_todo,   -> { where(state: nil) }
   scope :not_todo_or_done, -> { left_joins(:state).where(state: nil).or(where(state: { done: false })) }
   scope :dates_not_done, -> { dates.not_todo_or_done }
+  scope :dates_until, -> (end_date) { where('deadline < ?', end_date).or(where('scheduled < ?', end_date)) }
 
   def dates?
     !!(deadline || scheduled)

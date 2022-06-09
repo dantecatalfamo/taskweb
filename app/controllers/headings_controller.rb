@@ -23,7 +23,7 @@ class HeadingsController < ApplicationController
   def edit; end
 
   def agenda
-    @headings = Heading.dates
+    @headings = Heading.dates_until(2.weeks.from_now).not_todo_or_done
   end
 
   # POST /headings or /headings.json
