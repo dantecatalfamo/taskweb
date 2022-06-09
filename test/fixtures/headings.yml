@@ -4,14 +4,12 @@ one:
   title: MyString
   body: MyString
   deadline: 2022-05-27 10:44:21
-  scheduled: 2022-05-27 10:44:21
   depth: 1
 
 two:
   title: MyString
   body: MyString
   state: todo
-  deadline: 2022-05-27 10:44:21
   scheduled: 2022-05-27 10:44:21
   depth: 2
 

@@ -3,14 +3,6 @@ module HeadingsHelper
     "hsl(#{depth * 75 % 360}, 70%, 50%)"
   end
 
-  def stars(depth)
-    '*' * depth
-  end
-
-  def depth_spaces(depth, text)
-    ' ' * (depth + 1) + text.gsub("\n", "\n#{' ' * (depth + 1)}")
-  end
-
   def org_date(date)
     "<#{date.strftime('%Y-%m-%d %a %H:%M')}>"
   end
