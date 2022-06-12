@@ -1,0 +1,34 @@
+<li>
+  <% if [0, 6].include?(day.date.wday) %>
+    <strong>
+  <% end %>
+  <span class="font-monospace" style="white-space: pre"><%= day.date.strftime("%A").ljust(9) + day.date.strftime(" %e %b %Y") %></span>
+  <% if [0, 6].include?(day.date.wday) %>
+    </strong>
+  <% end %>
+  <ul class="list-unstyled ms-4">
+    <% day.headings.each do |heading| %>
+      <li class="my-1">
+        <% if heading.deadline %>
+          Deadline:
+          <% if heading.deadline < DateTime.now %>
+            <strong class="text-danger"><%= time_ago_in_words heading.deadline %> ago</strong>
+          <% end %>
+        <% elsif heading.scheduled %>
+          Scheduled:
+          <% if heading.scheduled < DateTime.now %>
+            <%= (Date.today - heading.scheduled.to_date).to_i %>x
+          <% end %>
+        <% else %>
+          Not supposed to be here
+        <% end %>
+        <strong>
+          <% if heading.state %>
+            <span style="color: <%= heading.state.color %>"><%= heading.state.name %></span>
+          <% end %>
+          <%= link_to heading.title, heading %>
+        </strong>
+      </li>
+    <% end %>
+  </ul>
+</li>

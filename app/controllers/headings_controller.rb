@@ -1,6 +1,8 @@
 class HeadingsController < ApplicationController
   before_action :set_heading, only: %i[show edit update destroy]
 
+  DateHeadings = Struct.new(:date, :headings)
+
   # GET /headings or /headings.json
   def index
     @headings = Heading.top_level
@@ -23,7 +25,14 @@ class HeadingsController < ApplicationController
   def edit; end
 
   def agenda
-    @headings = Heading.dates_until(2.weeks.from_now).not_todo_or_done
+    end_date = 2.weeks.from_now
+    headings = Heading.dates_until(end_date).not_todo_or_done
+    days = (DateTime.now..end_date).to_a
+    @headings_by_date = days.map do |day|
+      DateHeadings.new(day.to_date, headings.filter { |heading| heading.deadline&.to_date == day.to_date || heading.scheduled&.to_date == day.to_date })
+    end
+    overdue = headings.filter { |heading| heading.deadline&.to_date&.<(days.first.to_date) || heading.scheduled&.to_date&.<(days.first.to_date) }
+    @headings_by_date.first.headings.unshift(*overdue)
   end
 
   # POST /headings or /headings.json

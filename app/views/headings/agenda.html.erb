@@ -2,7 +2,8 @@
 
 <h1>Agenda</h1>
 
-<div id="dates">
-  <%= render partial: "headings/date", collection: @headings, as: :heading %>
-</div>
+<ul id="dates" class="list-unstyled">
+  <%#= render "agenda_today", day: @headings_by_date.first %>
+  <%= render partial: "agenda_date", collection: @headings_by_date[0..], as: :day %>
+</ul>
 
