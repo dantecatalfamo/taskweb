@@ -12,7 +12,7 @@
           (<%= heading.children.size %>)
         </small>
         <%= link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_heading_path(heading) %>
-        <%= link_to '<i class="bi bi-arrows-angle-expand"></i>'.html_safe, heading, target: "_top" %>
+        <%= link_to '<i class="bi bi-arrows-angle-expand"></i>'.html_safe, heading, data:  { turbo_frame: "headings" } %>
         <%= link_to '<i class="bi bi-x-lg"></i>'.html_safe, heading, class: "text-danger", data: { turbo_method: :delete, turbo_confirm: "Delete heading \"#{heading.title}\" and all its sub-headings?" } %>
       </summary>
       <div>

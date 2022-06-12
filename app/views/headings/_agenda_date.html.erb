@@ -10,15 +10,16 @@
     <% day.headings.each do |heading| %>
       <li class="my-1">
         <% if heading.deadline %>
-          Deadline:
+          <span class="text-danger">Deadline:</span>
           <% if heading.deadline < DateTime.now %>
             <strong class="text-danger"><%= time_ago_in_words heading.deadline %> ago</strong>
           <% end %>
         <% elsif heading.scheduled %>
-          Scheduled:
-          <% if heading.scheduled < DateTime.now %>
-            <%= (Date.today - heading.scheduled.to_date).to_i %>x
-          <% end %>
+          <span class="text-success">Scheduled:
+            <% if heading.scheduled < DateTime.now %>
+              <%= (Date.today - heading.scheduled.to_date).to_i %>x
+            <% end %>
+          </span>
         <% else %>
           Not supposed to be here
         <% end %>
@@ -26,7 +27,7 @@
           <% if heading.state %>
             <span style="color: <%= heading.state.color %>"><%= heading.state.name %></span>
           <% end %>
-          <%= link_to heading.title, heading %>
+          <%= link_to heading.title, heading, data: { turbo_frame: "headings" } %>
         </strong>
       </li>
     <% end %>

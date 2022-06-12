@@ -1,0 +1,10 @@
+<h1>Home</h1>
+
+<div class="row">
+  <div class="col">
+    <%= turbo_frame_tag "headings", src: headings_path %>
+  </div>
+  <div class="col-auto">
+    <%= turbo_frame_tag "agenda", src: agenda_path %>
+  </div>
+</div>

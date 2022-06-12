@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get "/agenda", to: "headings#agenda"
+
+  get "/", to: "headings#home", as: "home"
 end

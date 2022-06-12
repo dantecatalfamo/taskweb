@@ -1,13 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<nav>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Root", headings_path %></li>
-    <% @breadcrumbs[..-2].each do |breadcrumb| %>
-      <li class="breadcrumb-item"><%= link_to breadcrumb.title, breadcrumb %></li>
-    <% end %>
-    <li class="breadcrumb-item active"><%= @heading.title %></li>
-  </ol>
-</nav>
+<%= turbo_frame_tag "headings" do %>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Root", headings_path %></li>
+      <% @breadcrumbs[..-2].each do |breadcrumb| %>
+        <li class="breadcrumb-item"><%= link_to breadcrumb.title, breadcrumb %></li>
+      <% end %>
+      <li class="breadcrumb-item active"><%= @heading.title %></li>
+    </ol>
+  </nav>
 
-<%= render @heading %>
+  <%= render @heading %>
+
+<% end %>
