@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ['agenda', 'headings'];
 
   connect() {
-    this.headingsTarget.addEventListener("turbo:frame-load", this.reloadAgenda);
+    this.headingsTarget.addEventListener("turbo:submit-end", this.reloadAgenda);
   }
 
   reloadAgenda = () => {
