@@ -3,8 +3,7 @@ class HeadingsController < ApplicationController
 
   DateHeadings = Struct.new(:date, :headings)
 
-  def home
-  end
+  def home; end
 
   # GET /headings or /headings.json
   def index
@@ -32,9 +31,14 @@ class HeadingsController < ApplicationController
     headings = Heading.dates_until(end_date).not_todo_or_done
     days = (DateTime.now..end_date).to_a
     @headings_by_date = days.map do |day|
-      DateHeadings.new(day.to_date, headings.filter { |heading| heading.deadline&.to_date == day.to_date || heading.scheduled&.to_date == day.to_date })
+      DateHeadings.new(day.to_date,
+                       headings.filter do |heading|
+                         heading.deadline&.to_date == day.to_date || heading.scheduled&.to_date == day.to_date
+                       end)
     end
-    overdue = headings.filter { |heading| heading.deadline&.to_date&.<(days.first.to_date) || heading.scheduled&.to_date&.<(days.first.to_date) }
+    overdue = headings.filter do |heading|
+      heading.deadline&.to_date&.<(days.first.to_date) || heading.scheduled&.to_date&.<(days.first.to_date)
+    end
     @headings_by_date.first.headings.unshift(*overdue)
   end
 
@@ -74,7 +78,7 @@ class HeadingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to headings_url, notice: 'Heading was successfully destroyed.' }
       format.json { head :no_content }
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(@heading) }
+      format.turbo_stream
     end
   end
 
