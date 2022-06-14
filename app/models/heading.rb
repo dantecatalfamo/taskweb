@@ -16,7 +16,25 @@ class Heading < ApplicationRecord
   scope :not_todo,   -> { where(state: nil) }
   scope :not_todo_or_done, -> { left_joins(:state).where(state: nil).or(where(state: { done: false })) }
   scope :dates_not_done, -> { dates.not_todo_or_done }
-  scope :dates_until, -> (end_date) { where('deadline < ?', end_date).or(where('scheduled < ?', end_date)) }
+  scope :dates_until, ->(end_date) { where('deadline < ?', end_date).or(where('scheduled < ?', end_date)) }
+
+  DateHeadings = Struct.new(:date, :headings)
+
+  def self.agenda_dates(end_date = 2.weeks.from_now)
+    headings = dates_until(end_date).not_todo_or_done
+    days = (DateTime.now..end_date).to_a
+    headings_by_date = days.map do |day|
+      day_headings = headings.filter do |heading|
+        heading.deadline&.to_date == day.to_date || heading.scheduled&.to_date == day.to_date
+      end
+      DateHeadings.new(day.to_date, day_headings)
+    end
+    overdue = headings.filter do |heading|
+      heading.deadline&.to_date&.<(days.first.to_date) || heading.scheduled&.to_date&.<(days.first.to_date)
+    end
+    headings_by_date.first.headings.unshift(*overdue)
+    headings_by_date
+  end
 
   def dates?
     !!(deadline || scheduled)
