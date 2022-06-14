@@ -1,0 +1,6 @@
+<%= turbo_frame_tag "agenda" do %>
+  <ul id="agenda-dates" class="list-unstyled">
+    <%#= render "agenda_today", day: @headings_by_date.first %>
+    <%= render partial: "agenda_date", collection: date_headings[0..], as: :day %>
+  </ul>
+<% end %>

@@ -25,7 +25,7 @@ class HeadingsController < ApplicationController
   def edit; end
 
   def agenda
-    @headings_by_date = Heading.agenda_dates
+    @date_headings = Heading.agenda_dates
   end
 
   # POST /headings or /headings.json
