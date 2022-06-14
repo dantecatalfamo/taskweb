@@ -2,4 +2,6 @@
 
 <h1>Agenda</h1>
 
-<%= render "agenda", date_headings: @date_headings %>
+<%= turbo_frame_tag "agenda" do %>
+  <%= render "agenda", agenda_dates: @agenda_dates %>
+<% end %>

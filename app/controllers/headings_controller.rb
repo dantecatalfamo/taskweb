@@ -1,8 +1,6 @@
 class HeadingsController < ApplicationController
   before_action :set_heading, only: %i[show edit update destroy]
 
-  def home; end
-
   # GET /headings or /headings.json
   def index
     @headings = Heading.top_level
@@ -25,7 +23,12 @@ class HeadingsController < ApplicationController
   def edit; end
 
   def agenda
-    @date_headings = Heading.agenda_dates
+    @agenda_dates = Heading.agenda_dates
+  end
+
+  def home
+    @headings = Heading.top_level
+    @agenda_dates = Heading.agenda_dates
   end
 
   # POST /headings or /headings.json

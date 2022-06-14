@@ -2,9 +2,20 @@
 
 <div class="row" data-controller="home">
   <div class="col" data-home-target="headings">
-    <%= turbo_frame_tag "headings", src: headings_path %>
+    <%= turbo_frame_tag "headings" do %>
+      <% @headings.each do |heading| %>
+        <%= render heading %>
+      <% end %>
+
+      <%= form_with(model: Heading.new) do |form| %>
+        <%= form.text_field :title, placeholder: '+', style: 'border: none', autocomplete: 'off' %>
+        <%= form.hidden_field :parent_id %>
+      <% end %>
+    <% end %>
   </div>
   <div class="col-auto" data-home-target="agenda">
-    <%= turbo_frame_tag "agenda", src: agenda_path %>
+    <%= turbo_frame_tag "agenda" do %>
+      <%= render "agenda", agenda_dates: @agenda_dates %>
+    <% end %>
   </div>
 </div>
