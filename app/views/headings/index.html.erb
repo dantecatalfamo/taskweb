@@ -3,11 +3,9 @@
 <h1>Headings</h1>
 
 <%= turbo_frame_tag "headings" do %>
-  <div id="headings">
-    <% @headings.each do |heading| %>
-      <%= render heading %>
-    <% end %>
-  </div>
+  <% @headings.each do |heading| %>
+    <%= render heading %>
+  <% end %>
 
   <%= form_with(model: Heading.new) do |form| %>
     <%= form.text_field :title, placeholder: '+', style: 'border: none', autocomplete: 'off' %>
