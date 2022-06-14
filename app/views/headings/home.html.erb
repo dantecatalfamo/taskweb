@@ -14,7 +14,7 @@
     <% end %>
   </div>
   <div class="col-auto" data-home-target="agenda">
-    <%= turbo_frame_tag "agenda" do %>
+    <%= turbo_frame_tag "agenda", src: agenda_path do %>
       <%= render "agenda", agenda_dates: @agenda_dates %>
     <% end %>
   </div>
