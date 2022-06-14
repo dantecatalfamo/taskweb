@@ -12,7 +12,7 @@ export default class extends Controller {
       const newlines = this.newlinePositions();
       const prevLineBegin = newlines.reduce((acc, n) => (n < pos-1 ? n : acc));
       const prevLine = this.element.value.substring(prevLineBegin+1, pos).replace('\n', '');
-      const lead = prevLine.match(/^\W*/)[0];
+      const lead = prevLine.match(/^\W*(x\] )?/)[0].replace('[x]', '[ ]');
       this.element.setRangeText(lead);
       this.element.selectionStart += lead.length;
     }
