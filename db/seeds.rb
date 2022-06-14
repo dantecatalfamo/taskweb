@@ -5,8 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-HeadingState.create([
-  { name: 'TODO', done: false, color: '#e01b24' },
-  { name: 'WIP', done: false, color: '#e01b24' },
-  { name: 'DONE', done: true, color: '#26a269' }
-])
+HeadingState.create(
+  [
+    { name: 'TODO', done: false, color: '#e01b24' },
+    { name: 'NEXT', done: false, color: '#1c71d8' },
+    { name: 'WIP',  done: false, color: '#e01b24' },
+    { name: 'DONE', done: true,  color: '#26a269' }
+  ]
+)
