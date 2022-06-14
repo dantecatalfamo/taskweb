@@ -64,6 +64,7 @@ class HeadingsController < ApplicationController
       if @heading.update(heading_params)
         format.html { redirect_to heading_url(@heading), notice: 'Heading was successfully updated.' }
         format.json { render :show, status: :ok, location: @heading }
+        format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @heading.errors, status: :unprocessable_entity }
