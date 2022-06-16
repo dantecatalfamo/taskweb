@@ -20,7 +20,7 @@ class HeadingsControllerTest < ActionDispatch::IntegrationTest
       post headings_url, params: { heading: { body: @heading.body, deadline: @heading.deadline, scheduled: @heading.scheduled, state: @heading.state, title: @heading.title } }
     end
 
-    assert_redirected_to heading_url(Heading.last)
+    assert_redirected_to headings_url
   end
 
   test "should show heading" do
