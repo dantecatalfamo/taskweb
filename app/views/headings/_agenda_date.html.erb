@@ -28,7 +28,7 @@
           <% if heading.state %>
             <span style="color: <%= heading.state.color %>"><%= heading.state.name %></span>
           <% end %>
-          <%= link_to heading.title, heading, data: { turbo_frame: "headings" } %>
+          <%= link_to heading.title, heading, data: { turbo_frame: "notebooks" } %>
         </strong>
       </li>
     <% end %>

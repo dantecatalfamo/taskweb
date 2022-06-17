@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   get "/agenda", to: "headings#agenda"
 
-  get "/", to: "headings#home", as: "home"
+  get "/", to: "home#home", as: "home"
 end
