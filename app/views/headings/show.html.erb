@@ -1,9 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<%= turbo_frame_tag "headings" do %>
+<%= turbo_frame_tag "notebooks" do %>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to "Root", headings_path %></li>
+      <li class="breadcrumb-item"><%= link_to "Notebooks", notebooks_path %></li>
+      <li class="breadcrumb-item"><%= link_to @heading.notebook.title, @heading.notebook %></li>
       <% @breadcrumbs[..-2].each do |breadcrumb| %>
         <li class="breadcrumb-item"><%= link_to breadcrumb.title, breadcrumb %></li>
       <% end %>
@@ -12,5 +13,4 @@
   </nav>
 
   <%= render @heading %>
-
 <% end %>

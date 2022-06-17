@@ -9,6 +9,7 @@
   <ul class="list-unstyled ms-4">
     <% day.headings.each do |heading| %>
       <li class="my-1">
+        <%= heading.notebook.title %>:
         <% if heading.deadline %>
           <span class="text-danger">Deadline:</span>
           <% if heading.deadline < DateTime.now %>
