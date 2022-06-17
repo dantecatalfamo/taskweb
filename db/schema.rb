@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_17_001457) do
     t.integer "depth"
     t.integer "headings_count"
     t.integer "heading_state_id"
-    t.integer "notebook_id"
+    t.integer "notebook_id", null: false
     t.index ["heading_state_id"], name: "index_headings_on_heading_state_id"
     t.index ["notebook_id"], name: "index_headings_on_notebook_id"
     t.index ["parent_id"], name: "index_headings_on_parent_id"

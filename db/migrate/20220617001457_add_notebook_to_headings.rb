@@ -9,7 +9,7 @@ class AddNotebookToHeadings < ActiveRecord::Migration[7.0]
       heading.save!
     end
 
-    change_column_null :headings, :notebook_id, true
+    change_column_null :headings, :notebook_id, false
   end
 
   def down
