@@ -50,4 +50,24 @@ class HeadingsControllerTest < ActionDispatch::IntegrationTest
     get agenda_url
     assert_response :success
   end
+
+  test "sould get heading json" do
+    get heading_url(@heading)
+    assert_response :success
+  end
+
+  test "should get headings index json" do
+    get headings_url(format: :json)
+    assert_response :success
+  end
+
+  test "should get heading org" do
+    get heading_url(@heading)
+    assert_response :success
+  end
+
+  test "should get headings index org" do
+    get headings_url(format: :org)
+    assert_response :success
+  end
 end
