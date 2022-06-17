@@ -1,6 +1,7 @@
 class Heading < ApplicationRecord
   belongs_to :parent, class_name: 'Heading', foreign_key: :parent_id, required: false, counter_cache: true
   belongs_to :state, class_name: 'HeadingState', foreign_key: :heading_state_id, required: false
+  belongs_to :notebook
   has_many :children, class_name: 'Heading', foreign_key: :parent_id, dependent: :destroy
 
   before_save :set_depth
