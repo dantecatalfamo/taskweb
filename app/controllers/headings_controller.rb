@@ -26,11 +26,6 @@ class HeadingsController < ApplicationController
     @agenda_dates = Heading.agenda_dates
   end
 
-  def home
-    @headings = Heading.top_level
-    @agenda_dates = Heading.agenda_dates
-  end
-
   # POST /headings or /headings.json
   def create
     @heading = Heading.new(heading_params)
