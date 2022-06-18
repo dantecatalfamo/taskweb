@@ -5,6 +5,7 @@ one:
   body: MyString
   deadline: 2022-05-27 10:44:21
   depth: 1
+  notebook: one
 
 two:
   title: MyString
@@ -12,6 +13,7 @@ two:
   state: todo
   scheduled: 2022-05-27 10:44:21
   depth: 2
+  notebook: one
 
 three:
   title: MyString
@@ -21,6 +23,7 @@ three:
   deadline: 2022-05-27 10:44:21
   scheduled: 2022-05-27 10:44:21
   depth: 2
+  notebook: one
 
 four:
   title: MyString
@@ -30,4 +33,5 @@ four:
   deadline: nil
   scheduled: nil
   depth: 2
+  notebook: one
 
