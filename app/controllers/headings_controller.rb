@@ -35,9 +35,11 @@ class HeadingsController < ApplicationController
   def create
     @heading = Heading.new(heading_params)
 
+    @heading.notebook_id = @heading.parent.notebook_id if @heading.parent_id
+
     respond_to do |format|
       if @heading.save
-        redirect_url = @heading.parent.nil? ? headings_url : heading_url(@heading.parent)
+        redirect_url = @heading.parent.nil? ? notebook_url(@heading.notebook) : heading_url(@heading.parent)
         format.html { redirect_to redirect_url, notice: 'Heading was successfully created.' }
         format.json { render :show, status: :created, location: @heading }
       else
@@ -81,6 +83,7 @@ class HeadingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def heading_params
-    params.require(:heading).permit(:title, :body, :status, :deadline, :scheduled, :parent_id, :heading_state_id)
+    params.require(:heading).permit(:title, :body, :status, :deadline, :scheduled, :parent_id, :heading_state_id,
+                                    :notebook_id)
   end
 end
