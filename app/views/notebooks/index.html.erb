@@ -3,11 +3,5 @@
 <h1>Notebooks</h1>
 
 <%= turbo_frame_tag "notebooks" do %>
-  <% @notebooks.each do |notebook| %>
-    <%= link_to notebook.title, notebook %>
-  <% end %>
-  <div>
-    <%= link_to "New notebook", new_notebook_path %>
-  </div>
+  <%= render "notebooks/notebooks_index", notebooks: @notebooks %>
 <% end %>
-

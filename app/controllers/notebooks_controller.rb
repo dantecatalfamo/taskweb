@@ -1,5 +1,5 @@
 class NotebooksController < ApplicationController
-  before_action :set_notebook, only: %i[ show edit update destroy ]
+  before_action :set_notebook, only: %i[show edit update destroy]
 
   # GET /notebooks or /notebooks.json
   def index
@@ -7,8 +7,7 @@ class NotebooksController < ApplicationController
   end
 
   # GET /notebooks/1 or /notebooks/1.json
-  def show
-  end
+  def show; end
 
   # GET /notebooks/new
   def new
@@ -16,8 +15,7 @@ class NotebooksController < ApplicationController
   end
 
   # GET /notebooks/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /notebooks or /notebooks.json
   def create
@@ -25,7 +23,7 @@ class NotebooksController < ApplicationController
 
     respond_to do |format|
       if @notebook.save
-        format.html { redirect_to notebook_url(@notebook), notice: "Notebook was successfully created." }
+        format.html { redirect_to notebook_url(@notebook), notice: 'Notebook was successfully created.' }
         format.json { render :show, status: :created, location: @notebook }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class NotebooksController < ApplicationController
   def update
     respond_to do |format|
       if @notebook.update(notebook_params)
-        format.html { redirect_to notebook_url(@notebook), notice: "Notebook was successfully updated." }
+        format.html { redirect_to notebooks_url, notice: 'Notebook was successfully updated.' }
         format.json { render :show, status: :ok, location: @notebook }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class NotebooksController < ApplicationController
     @notebook.destroy
 
     respond_to do |format|
-      format.html { redirect_to notebooks_url, notice: "Notebook was successfully destroyed." }
+      format.html { redirect_to notebooks_url, notice: 'Notebook was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_notebook
-      @notebook = Notebook.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def notebook_params
-      params.require(:notebook).permit(:title)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_notebook
+    @notebook = Notebook.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def notebook_params
+    params.require(:notebook).permit(:title)
+  end
 end

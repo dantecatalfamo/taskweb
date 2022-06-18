@@ -1,6 +1,8 @@
 <h1>Editing notebook</h1>
 
-<%= render "form", notebook: @notebook %>
+<%= turbo_frame_tag "notebooks" do %>
+  <%= render "form", notebook: @notebook %>
+<% end %>
 
 <br>
 
