@@ -1,5 +1,5 @@
 module HeadingsHelper
-  SRC_BLOCK_REGEX = /#\+START_SRC([^\n]*)\n(.*?)#\+END_SRC/mo
+  SRC_BLOCK_REGEX = /#\+BEGIN_SRC([^\n]*)\n(.*?)#\+END_SRC/mo
 
   def depth_color(depth)
     "hsl(#{depth * 75 % 360}, 70%, 50%)"
