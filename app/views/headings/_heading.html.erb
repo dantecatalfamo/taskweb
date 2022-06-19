@@ -30,7 +30,7 @@
           </p>
         <% end %>
 
-        <p style="white-space: pre-wrap"><%= heading.body %></p>
+        <p style="white-space: pre-wrap"><%= raw process_org_body(heading.body) %></p>
         
         <% heading.children.each do |child| %>
           <%= render child %>

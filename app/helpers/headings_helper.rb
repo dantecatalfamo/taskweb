@@ -1,4 +1,6 @@
 module HeadingsHelper
+  SRC_BLOCK_REGEX = /#\+START_SRC([^\n]*)\n(.*?)#\+END_SRC/mo
+
   def depth_color(depth)
     "hsl(#{depth * 75 % 360}, 70%, 50%)"
   end
@@ -21,5 +23,11 @@ module HeadingsHelper
     string << ' ' if heading.deadline && heading.scheduled
     string << "SCHEDULED: #{org_date(heading.scheduled)}" if heading.scheduled
     string
+  end
+
+  def process_org_body(text)
+    escape_once(text).gsub(SRC_BLOCK_REGEX) do |_match|
+      tag.code(Regexp.last_match(2))
+    end
   end
 end
