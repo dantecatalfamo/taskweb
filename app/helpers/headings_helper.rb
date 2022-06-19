@@ -26,8 +26,12 @@ module HeadingsHelper
   end
 
   def process_org_body(text)
+    return unless text
+
     escape_once(text).gsub(SRC_BLOCK_REGEX) do |_match|
       tag.code(Regexp.last_match(2))
+    end.gsub(URI.regexp) do |match|
+      tag.a(match, href: match)
     end
   end
 end
