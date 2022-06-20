@@ -5,6 +5,7 @@ class Heading < ApplicationRecord
   has_many :children, class_name: 'Heading', foreign_key: :parent_id, dependent: :destroy
 
   before_save :set_depth
+  before_save :set_closed_at, if: :will_save_change_to_heading_state_id?
   after_save :fix_children_depth
 
   scope :top_level,  -> { where(parent: nil) }
@@ -39,6 +40,16 @@ class Heading < ApplicationRecord
 
   def dates?
     !!(deadline || scheduled)
+  end
+
+  def set_closed_at
+    old_state = HeadingState.find_by(id: heading_state_id_was)
+
+    if !state&.done
+      self.closed_at = nil
+    elsif state&.done && !old_state&.done
+      self.closed_at = Time.now
+    end
   end
 
   protected

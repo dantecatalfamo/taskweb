@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_17_001457) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_20_042357) do
   create_table "heading_states", force: :cascade do |t|
     t.string "name"
     t.boolean "done"
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_17_001457) do
     t.integer "headings_count"
     t.integer "heading_state_id"
     t.integer "notebook_id", null: false
+    t.datetime "closed_at"
     t.index ["heading_state_id"], name: "index_headings_on_heading_state_id"
     t.index ["notebook_id"], name: "index_headings_on_notebook_id"
     t.index ["parent_id"], name: "index_headings_on_parent_id"

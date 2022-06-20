@@ -13,8 +13,8 @@ module HeadingsHelper
     ' ' * (depth + 1) + text.gsub("\n", "\n#{' ' * (depth + 1)}")
   end
 
-  def org_date(date)
-    "<#{date.strftime('%Y-%m-%d %a %H:%M')}>"
+  def org_date(date, inactive: false)
+    "#{inactive ? '[' : '<'}#{date.strftime('%Y-%m-%d %a %H:%M')}#{inactive ? ']' : '>'}"
   end
 
   def deadline_scheduled_line(heading)
@@ -22,6 +22,8 @@ module HeadingsHelper
     string << "DEADLINE: #{org_date(heading.deadline)}" if heading.deadline
     string << ' ' if heading.deadline && heading.scheduled
     string << "SCHEDULED: #{org_date(heading.scheduled)}" if heading.scheduled
+    string << ' ' if heading.dates? && heading.closed_at
+    string << "CLOSED: #{org_date(heading.closed_at, inactive: true)}" if heading.closed_at
     string
   end
 

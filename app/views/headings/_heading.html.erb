@@ -30,6 +30,13 @@
           </p>
         <% end %>
 
+        <% if heading.closed_at %>
+          <p>
+            <strong>Closed:</strong>
+            <%= heading.closed_at %>
+          </p>
+        <% end %>
+
         <p style="white-space: pre-wrap"><%= raw process_org_body(heading.body) %></p>
         
         <% heading.children.each do |child| %>
