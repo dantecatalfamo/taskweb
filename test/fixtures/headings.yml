@@ -47,7 +47,7 @@ src_block:
     after text
   notebook: one
 
-bare_link:
+bare_url:
   title: MyString
   depth: 1
   body: |

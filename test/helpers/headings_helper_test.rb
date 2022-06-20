@@ -30,4 +30,10 @@ class HeadingsHelperTest < ActionView::TestCase
 
     assert_match(/\<code\>.*\<\/code\>/m, line)
   end
+
+  test "should replace bare url with link" do
+    line = process_org_body(headings(:bare_url).body)
+
+    assert_match(/\<a href\=\.*/, line)
+  end
 end
