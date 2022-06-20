@@ -22,6 +22,12 @@ class HeadingsHelperTest < ActionView::TestCase
   test "should render closed_at correctly" do
     line = deadline_scheduled_line(headings(:four))
 
-    assert_match line, "CLOSED: [2022-05-27 Fri 10:44]"
+    assert_match "CLOSED: [2022-05-27 Fri 10:44]", line
+  end
+
+  test "should put a source block in code tags" do
+    line = process_org_body(headings(:src_block).body)
+
+    assert_match(/\<code\>.*\<\/code\>/m, line)
   end
 end
