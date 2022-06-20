@@ -18,4 +18,10 @@ class HeadingsHelperTest < ActionView::TestCase
 
     assert_equal line, "DEADLINE: <2022-05-27 Fri 10:44> SCHEDULED: <2022-05-27 Fri 10:44>"
   end
+
+  test "should render closed_at correctly" do
+    line = deadline_scheduled_line(headings(:four))
+
+    assert_match line, "CLOSED: [2022-05-27 Fri 10:44]"
+  end
 end
