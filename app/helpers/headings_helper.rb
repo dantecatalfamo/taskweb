@@ -30,7 +30,7 @@ module HeadingsHelper
 
     escape_once(text).gsub(SRC_BLOCK_REGEX) do |_match|
       tag.code(Regexp.last_match(2))
-    end.gsub(URI.regexp) do |match|
+    end.gsub(URI::DEFAULT_PARSER.make_regexp) do |match|
       tag.a(match, href: match)
     end
   end
