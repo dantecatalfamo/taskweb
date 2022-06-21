@@ -36,4 +36,8 @@ class HeadingsHelperTest < ActionView::TestCase
 
     assert_match(/\<a href\=\.*/, line)
   end
+
+  test "should return the correct number of stars" do
+    assert_equal '*****', stars(5)
+  end
 end
