@@ -17,6 +17,10 @@ module HeadingsHelper
     "#{inactive ? '[' : '<'}#{date.strftime('%Y-%m-%d %a %H:%M')}#{inactive ? ']' : '>'}"
   end
 
+  def agenda_date(date)
+    date.strftime("%A").ljust(9) + date.strftime(" %e %b %Y")
+  end
+
   def deadline_scheduled_line(heading)
     string = ''
     string << "DEADLINE: #{org_date(heading.deadline)}" if heading.deadline

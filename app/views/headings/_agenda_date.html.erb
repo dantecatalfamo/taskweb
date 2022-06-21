@@ -2,7 +2,7 @@
   <% if [0, 6].include?(day.date.wday) %>
     <strong>
   <% end %>
-  <span class="font-monospace" style="white-space: pre"><%= day.date.strftime("%A").ljust(9) + day.date.strftime(" %e %b %Y") %></span>
+  <span class="font-monospace" style="white-space: pre"><%= agenda_date(day.date) %></span>
   <% if [0, 6].include?(day.date.wday) %>
     </strong>
   <% end %>
