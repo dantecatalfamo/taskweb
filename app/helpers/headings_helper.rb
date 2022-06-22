@@ -47,7 +47,7 @@ module HeadingsHelper
 
   def org_headline(heading)
     headline = stars(heading.depth)
-    headline << " #{heading.state.name} " if heading.state
+    headline << " #{heading.state.name}" if heading.state
     headline << " #{heading.title}"
     headline
   end
