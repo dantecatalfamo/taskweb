@@ -50,7 +50,7 @@ class HeadingsHelperTest < ActionView::TestCase
     assert_equal '*****', stars(5)
   end
 
-    MARKUP_SPEC.each do |spec|
+  MARKUP_SPEC.each do |spec|
     test "should #{spec[:verb]} text" do
       assert_equal "<#{spec[:tag]}>testing</#{spec[:tag]}>", process_org_body("#{spec[:mark]}testing#{spec[:mark]}")
     end
