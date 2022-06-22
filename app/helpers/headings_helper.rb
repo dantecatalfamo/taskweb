@@ -45,6 +45,29 @@ module HeadingsHelper
     string
   end
 
+  def org_headline(heading)
+    headline = stars(heading.depth)
+    headline << " #{heading.state.name} " if heading.state
+    headline << " #{heading.title}"
+    headline
+  end
+
+  def org_dateline(heading)
+    "#{depth_spaces(heading.depth, deadline_scheduled_line(heading))}"
+  end
+
+  def org_body(heading)
+    "#{depth_spaces(heading.depth, heading.body).rstrip}"
+  end
+
+  def org_heading_render(heading)
+    components = []
+    components << "#{org_headline(heading)}"
+    components << "#{org_dateline(heading)}" if heading.dateline?
+    components << "#{org_body(heading)}" if heading.body.present?
+    components.join("\n") + "\n"
+  end
+
   def process_org_body(text)
     return unless text
 

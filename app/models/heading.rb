@@ -42,6 +42,10 @@ class Heading < ApplicationRecord
     !!(deadline || scheduled)
   end
 
+  def dateline?
+    dates? || !!closed_at
+  end
+
   def set_closed_at
     old_state = HeadingState.find_by(id: heading_state_id_was)
 
