@@ -1,6 +1,15 @@
 require "test_helper"
 
 class HeadingsHelperTest < ActionView::TestCase
+  MARKUP_SPEC = [
+    {verb: "bolden",    tag: "strong", mark: "*"},
+    {verb: "italicize", tag: "em",     mark: "/"},
+    {verb: "underline", tag: "ins",    mark: "_"},
+    {verb: "strike",    tag: "del",    mark: "+"},
+    {verb: "code",      tag: "code",   mark: "~"},
+    {verb: "vermatim",  tag: "samp",   mark: "="}
+  ]
+
   test "should render org deadline correctly" do
     deadline = deadline_scheduled_line(headings(:one))
 
@@ -28,7 +37,7 @@ class HeadingsHelperTest < ActionView::TestCase
   test "should put a source block in code tags" do
     line = process_org_body(headings(:src_block).body)
 
-    assert_match(/\<code\>.*\<\/code\>/m, line)
+    assert_match(/\<code class="language-ruby"\>.*\<\/code\>/m, line)
   end
 
   test "should replace bare url with link" do
@@ -39,5 +48,11 @@ class HeadingsHelperTest < ActionView::TestCase
 
   test "should return the correct number of stars" do
     assert_equal '*****', stars(5)
+  end
+
+    MARKUP_SPEC.each do |spec|
+    test "should #{spec[:verb]} text" do
+      assert_equal "<#{spec[:tag]}>testing</#{spec[:tag]}>", process_org_body("#{spec[:mark]}testing#{spec[:mark]}")
+    end
   end
 end
