@@ -3,7 +3,7 @@ module HeadingsHelper
     /#{MARKUP_BEGIN_REGEX}#{character_regex}(#{MARKUP_INTERNAL_REGEX})#{character_regex}#{MARKUP_END_REGEX}/
   end
 
-  SRC_BLOCK_REGEX = /#\+BEGIN_SRC([^\n]*)\n(.*?)#\+END_SRC/m
+  SRC_BLOCK_REGEX = /#\+BEGIN_SRC\s*([^\n]*)\n(.*?)#\+END_SRC/m
 
   MARKUP_BEGIN_REGEX = /(?<=\s|\A)/
   MARKUP_INTERNAL_REGEX = /(?=\S).+?(?<=\S)/m
@@ -48,8 +48,10 @@ module HeadingsHelper
   def process_org_body(text)
     return unless text
 
-    escape_once(text).gsub(SRC_BLOCK_REGEX) do |_match|
-      tag.code(Regexp.last_match(2))
+    escape_once(text).gsub(SRC_BLOCK_REGEX) do
+      tag.pre do
+        tag.code(Regexp.last_match(2), class: ("language-#{Regexp.last_match(1)}" if Regexp.last_match(1).present?))
+      end
     end.gsub(URI::DEFAULT_PARSER.make_regexp) do |match|
       tag.a(match, href: match)
     end.gsub(BOLD_REGEX) do
