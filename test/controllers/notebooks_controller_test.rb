@@ -45,4 +45,9 @@ class NotebooksControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to notebooks_url
   end
+
+  test 'should get notebook org' do
+    get notebook_url(@notebook)
+    assert_response :success
+  end
 end
