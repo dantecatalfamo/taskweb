@@ -3,7 +3,7 @@ module HeadingsHelper
     /#{MARKUP_BEGIN_REGEX}#{character_regex}(#{MARKUP_INTERNAL_REGEX})#{character_regex}#{MARKUP_END_REGEX}/
   end
 
-  SRC_BLOCK_REGEX = /#\+BEGIN_SRC\s*([^\n]*)\n(.*?)#\+END_SRC/m
+  SRC_BLOCK_REGEX = /#\+BEGIN_SRC\s*([^\n]*)\n(.*?)#\+END_SRC/mi
 
   MARKUP_BEGIN_REGEX = /(?<=\s|\A)/
   MARKUP_INTERNAL_REGEX = /(?=\S).+?(?<=\S)/m
