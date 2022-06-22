@@ -37,7 +37,7 @@ class HeadingsHelperTest < ActionView::TestCase
   test "should put a source block in code tags" do
     line = process_org_body(headings(:src_block).body)
 
-    assert_match(/\<code class="language-ruby"\>.*\<\/code\>/m, line)
+    assert_match(/<pre><code class="language-ruby">.*<\/code><\/pre>/m, line)
   end
 
   test "should replace bare url with link" do
