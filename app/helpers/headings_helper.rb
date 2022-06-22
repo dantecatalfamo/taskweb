@@ -1,5 +1,19 @@
 module HeadingsHelper
-  SRC_BLOCK_REGEX = /#\+BEGIN_SRC([^\n]*)\n(.*?)#\+END_SRC/mo
+  def self.create_markup_regex(character_regex)
+    /#{MARKUP_BEGIN_REGEX}#{character_regex}(#{MARKUP_INTERNAL_REGEX})#{character_regex}#{MARKUP_END_REGEX}/
+  end
+
+  SRC_BLOCK_REGEX = /#\+BEGIN_SRC([^\n]*)\n(.*?)#\+END_SRC/m
+
+  MARKUP_BEGIN_REGEX = /(?<=\s|\A)/
+  MARKUP_INTERNAL_REGEX = /(?=\S).+?(?<=\S)/m
+  MARKUP_END_REGEX = /(?=\s|\z)/
+  BOLD_REGEX = create_markup_regex(/\*/)
+  ITALIC_REGEX = create_markup_regex(%r{/})
+  UNDERSCORE_REGEX = create_markup_regex(/_/)
+  STRIKE_THROUGH_REGEX = create_markup_regex(/\+/)
+  CODE_REGEX = create_markup_regex(/~/)
+  VERBATIM_REGEX = create_markup_regex(/=/)
 
   def depth_color(depth)
     "hsl(#{depth * 75 % 360}, 70%, 50%)"
@@ -18,7 +32,7 @@ module HeadingsHelper
   end
 
   def agenda_date(date)
-    date.strftime("%A").ljust(9) + date.strftime(" %e %b %Y")
+    date.strftime('%A').ljust(9) + date.strftime(' %e %b %Y')
   end
 
   def deadline_scheduled_line(heading)
@@ -38,6 +52,18 @@ module HeadingsHelper
       tag.code(Regexp.last_match(2))
     end.gsub(URI::DEFAULT_PARSER.make_regexp) do |match|
       tag.a(match, href: match)
+    end.gsub(BOLD_REGEX) do
+      tag.strong(Regexp.last_match(1))
+    end.gsub(ITALIC_REGEX) do
+      tag.em(Regexp.last_match(1))
+    end.gsub(UNDERSCORE_REGEX) do
+      tag.ins(Regexp.last_match(1))
+    end.gsub(STRIKE_THROUGH_REGEX) do
+      tag.del(Regexp.last_match(1))
+    end.gsub(CODE_REGEX) do
+      tag.code(Regexp.last_match(1))
+    end.gsub(VERBATIM_REGEX) do
+      tag.samp(Regexp.last_match(1))
     end
   end
 end
