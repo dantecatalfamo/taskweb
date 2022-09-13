@@ -1,5 +1,5 @@
 <%= turbo_frame_tag heading do %>
-  <div data-controller="heading" data-heading-id-value="<%= heading.id %>" class="pb-2 ps-2 mb-2 rounded-start" style="border-left: 3px solid <%= depth_color(heading.depth) %>">
+  <div data-controller="heading" data-heading-id-value="<%= heading.id %>" class="pb-2 ps-2 pe-1 mb-2 rounded-start card" style="border-left: 3px solid <%= depth_color(heading.depth) %>">
     <details data-heading-target="details" data-action="heading#toggle">
       <summary>
         <strong>

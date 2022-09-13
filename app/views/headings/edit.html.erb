@@ -1,7 +1,7 @@
 <h1>Editing heading</h1>
 
 <%= turbo_frame_tag @heading do %>
-  <div style="padding-left: 10px; padding-bottom: 10px; margin-bottom: 10px; border-left: 3px solid <%= depth_color(@heading.depth) %>; border-radius: 5px">
+  <div style="padding-left: 10px; padding-bottom: 10px; margin-bottom: 10px; border-left: 3px solid <%= depth_color(@heading.depth) %>; border-radius: 5px" class="card pt-2">
     
     <%= render "form", heading: @heading %>
     <% @heading.children.each do |child| %>

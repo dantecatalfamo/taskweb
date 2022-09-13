@@ -10,11 +10,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-light">
     <div class="container">
       <div class="row mb-3">
         <div class="col">
-          <nav class="navbar bg-light">
+          <nav class="navbar bg-body card">
             <div class="container-fluid">
               <%= link_to "Taskweb", home_path, class: "navbar-brand", data: { turbo_frame: "notebooks" } %>
             </div>
@@ -30,7 +30,7 @@
         <div class="col-12 col-lg-auto order-first order-lg-last" data-home-target="agenda">
           <div class="row">
             <div class="col">
-              <div class="card shadow-sm bg-light p-3 pb-0">
+              <div class="card shadow-sm p-3 pb-0">
                 <%= turbo_frame_tag "agenda" do %>
                   <%= render "headings/agenda", agenda_dates: Heading.agenda_dates %>
                 <% end %>
