@@ -72,7 +72,7 @@ module HeadingsHelper
     return unless text
 
     escape_once(text).gsub(SRC_BLOCK_REGEX) do
-      tag.pre do
+      tag.pre(class: 'border py-2 rounded bg-light') do
         tag.code(Regexp.last_match(2), class: ("language-#{Regexp.last_match(1)}" if Regexp.last_match(1).present?))
       end
     end.gsub(URI::DEFAULT_PARSER.make_regexp) do |match|
@@ -86,7 +86,7 @@ module HeadingsHelper
     end.gsub(STRIKE_THROUGH_REGEX) do
       tag.del(Regexp.last_match(1))
     end.gsub(CODE_REGEX) do
-      tag.code(Regexp.last_match(1))
+      tag.code(Regexp.last_match(1), class: 'border border-danger px-1 bg-light rounded')
     end.gsub(VERBATIM_REGEX) do
       tag.samp(Regexp.last_match(1))
     end
