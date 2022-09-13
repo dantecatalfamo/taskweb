@@ -5,8 +5,8 @@ export default class extends Controller {
 
   connect() {
     this.headingsTarget.addEventListener("turbo:submit-end", this.reloadAgenda);
-    const agendaFrame = this.agendaTarget.querySelector("#agenda");
-    this.agendaRefresh = setInterval(() => agendaFrame.reload(), 5 * 60 * 1000);
+    this.agendaRefresh = setInterval(this.reloadAgenda, 5 * 60 * 1000);
+    window.agenda = this.agendaTarget;
   }
 
   disconnect() {
@@ -15,6 +15,7 @@ export default class extends Controller {
 
   reloadAgenda = () => {
     const agenda = this.agendaTarget.querySelector('#agenda');
+    agenda.src = '/agenda';
     agenda.reload();
   }
 }
