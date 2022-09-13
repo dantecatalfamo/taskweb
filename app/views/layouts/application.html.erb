@@ -12,9 +12,13 @@
 
   <body>
     <div class="container">
-      <div class="row">
+      <div class="row mb-3">
         <div class="col">
-          <h1>Home</h1>
+          <nav class="navbar bg-light">
+            <div class="container-fluid">
+              <%= link_to "Taskweb", home_path, class: "navbar-brand", data: { turbo_frame: "notebooks" } %>
+            </div>
+          </nav>
         </div>
       </div>
 
@@ -25,10 +29,12 @@
         </div>
         <div class="col-12 col-lg-auto order-first order-lg-last" data-home-target="agenda">
           <div class="row">
-            <div class="col card shadow-sm bg-light p-3 pb-0">
-              <%= turbo_frame_tag "agenda" do %>
-                <%= render "headings/agenda", agenda_dates: Heading.agenda_dates %>
-              <% end %>
+            <div class="col">
+              <div class="card shadow-sm bg-light p-3 pb-0">
+                <%= turbo_frame_tag "agenda" do %>
+                  <%= render "headings/agenda", agenda_dates: Heading.agenda_dates %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
