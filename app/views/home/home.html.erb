@@ -10,7 +10,7 @@
       <%= render "notebooks/notebooks_index", notebooks: @notebooks %>
     <% end %>
   </div>
-  <div class="agenda-bar col-12 col-lg-auto order-first order-lg-last border-start bg-light" data-home-target="agenda">
+  <div class="col-12 col-lg-auto order-first order-lg-last card shadow-sm bg-light p-3 pb-0" data-home-target="agenda">
     <%= turbo_frame_tag "agenda", src: agenda_path do %>
       <%= render "headings/agenda", agenda_dates: @agenda_dates %>
     <% end %>
