@@ -4,7 +4,7 @@
   <% end %>
 
   <%= form_with(model: Heading.new(notebook_id: @notebook.id)) do |form| %>
-    <%= form.text_field :title, placeholder: '+', autocomplete: 'off' %>
+    <%= form.text_field :title, placeholder: '+', style: 'border: none', autocomplete: 'off' %>
     <%= form.hidden_field :parent_id %>
     <%= form.hidden_field :notebook_id %>
   <% end %>

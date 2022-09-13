@@ -19,13 +19,15 @@
               <%= link_to "Taskweb", home_path, class: "navbar-brand", data: { turbo_frame: "notebooks" } %>
             </div>
           </nav>
+          <div><%= notice %></div>
         </div>
       </div>
 
-      <div class="row" data-controller="home">
+      <div class="row gx-3" data-controller="home">
         <div class="col-12 col-lg" data-home-target="headings">
-          <p style="color: green"><%= notice %></p>
-          <%= yield %>
+          <div class="card p-3 shadow-sm">
+            <%= yield %>
+          </div>
         </div>
         <div class="col-12 col-lg-auto order-first order-lg-last" data-home-target="agenda">
           <div class="row">
