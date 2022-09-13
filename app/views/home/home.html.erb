@@ -1,1 +1,3 @@
-<%= render "notebooks/notebooks_index", notebooks: @notebooks %>
+<%= turbo_frame_tag "notebooks" do %>
+  <%= render "notebooks/notebooks_index", notebooks: @notebooks %>
+<% end %>

@@ -6,7 +6,9 @@ export default class extends Controller {
   connect() {
     this.headingsTarget.addEventListener("turbo:submit-end", this.reloadAgenda);
     this.agendaRefresh = setInterval(this.reloadAgenda, 5 * 60 * 1000);
-    window.agenda = this.agendaTarget;
+    const notebooks = this.headingsTarget.querySelector("#notebooks");
+    notebooks.dataset.turboAction = 'advance';
+    window.notebooks = notebooks;
   }
 
   disconnect() {

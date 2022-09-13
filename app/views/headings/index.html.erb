@@ -1,8 +1,4 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Headings</h1>
-
-<%= turbo_frame_tag "headings" do %>
+<%= turbo_frame_tag "notebooks" do %>
   <% @headings.each do |heading| %>
     <%= render heading %>
   <% end %>

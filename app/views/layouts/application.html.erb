@@ -20,9 +20,8 @@
 
       <div class="row" data-controller="home">
         <div class="col-12 col-lg" data-home-target="headings">
-          <%= turbo_frame_tag "notebooks", data: { turbo_action: "advance" } do %>
-            <%= yield %>
-          <% end %>
+          <p style="color: green"><%= notice %></p>
+          <%= yield %>
         </div>
         <div class="col-12 col-lg-auto order-first order-lg-last" data-home-target="agenda">
           <div class="row">
