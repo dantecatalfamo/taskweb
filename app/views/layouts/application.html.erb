@@ -12,7 +12,28 @@
 
   <body>
     <div class="container">
-      <%= yield %>
+      <div class="row">
+        <div class="col">
+          <h1>Home</h1>
+        </div>
+      </div>
+
+      <div class="row" data-controller="home">
+        <div class="col-12 col-lg" data-home-target="headings">
+          <%= turbo_frame_tag "notebooks", data: { turbo_action: "advance" } do %>
+            <%= yield %>
+          <% end %>
+        </div>
+        <div class="col-12 col-lg-auto order-first order-lg-last" data-home-target="agenda">
+          <div class="row">
+            <div class="col card shadow-sm bg-light p-3 pb-0">
+              <%= turbo_frame_tag "agenda", src: agenda_path do %>
+                <%= render "headings/agenda", agenda_dates: Heading.agenda_dates %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

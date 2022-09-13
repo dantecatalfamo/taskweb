@@ -1,7 +1,5 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Notebooks</h1>
-
 <%= turbo_frame_tag "notebooks" do %>
   <%= render "notebooks/notebooks_index", notebooks: @notebooks %>
 <% end %>
