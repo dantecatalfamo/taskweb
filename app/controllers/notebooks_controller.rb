@@ -4,7 +4,7 @@ class NotebooksController < ApplicationController
 
   # GET /notebooks or /notebooks.json
   def index
-    @notebooks = current_user&.notebooks || []
+    @notebooks = Notebook.where(user: current_user)
   end
 
   # GET /notebooks/1 or /notebooks/1.json

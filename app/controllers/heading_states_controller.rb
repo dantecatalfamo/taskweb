@@ -1,14 +1,14 @@
 class HeadingStatesController < ApplicationController
-  before_action :set_heading_state, only: %i[ show edit update destroy ]
+  before_action :authorize
+  before_action :set_heading_state, only: %i[show edit update destroy]
 
   # GET /heading_states or /heading_states.json
   def index
-    @heading_states = HeadingState.all
+    @heading_states = HeadingState.where(user: current_user)
   end
 
   # GET /heading_states/1 or /heading_states/1.json
-  def show
-  end
+  def show; end
 
   # GET /heading_states/new
   def new
@@ -16,16 +16,16 @@ class HeadingStatesController < ApplicationController
   end
 
   # GET /heading_states/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /heading_states or /heading_states.json
   def create
     @heading_state = HeadingState.new(heading_state_params)
+    @heading_state.user = current_user
 
     respond_to do |format|
       if @heading_state.save
-        format.html { redirect_to heading_state_url(@heading_state), notice: "Heading state was successfully created." }
+        format.html { redirect_to heading_state_url(@heading_state), notice: 'Heading state was successfully created.' }
         format.json { render :show, status: :created, location: @heading_state }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class HeadingStatesController < ApplicationController
   def update
     respond_to do |format|
       if @heading_state.update(heading_state_params)
-        format.html { redirect_to heading_state_url(@heading_state), notice: "Heading state was successfully updated." }
+        format.html { redirect_to heading_state_url(@heading_state), notice: 'Heading state was successfully updated.' }
         format.json { render :show, status: :ok, location: @heading_state }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class HeadingStatesController < ApplicationController
     @heading_state.destroy
 
     respond_to do |format|
-      format.html { redirect_to heading_states_url, notice: "Heading state was successfully destroyed." }
+      format.html { redirect_to heading_states_url, notice: 'Heading state was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_heading_state
-      @heading_state = HeadingState.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def heading_state_params
-      params.require(:heading_state).permit(:name, :done, :color)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_heading_state
+    @heading_state = HeadingState.find_by!(id: params[:id], user: current_user)
+  end
+
+  # Only allow a list of trusted parameters through.
+  def heading_state_params
+    params.require(:heading_state).permit(:name, :done, :color)
+  end
 end

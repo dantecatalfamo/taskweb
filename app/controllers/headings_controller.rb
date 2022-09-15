@@ -24,7 +24,7 @@ class HeadingsController < ApplicationController
   def edit; end
 
   def agenda
-    @agenda_dates = Heading.agenda_dates
+    @agenda_dates = Heading.where(user: current_user).agenda_dates
   end
 
   # POST /headings or /headings.json
