@@ -19,7 +19,14 @@
               <%= link_to "Taskweb", home_path, class: "navbar-brand", data: { turbo_frame: "notebooks" } %>
             </div>
           </nav>
-          <div><%= notice %></div>
+          <div>
+            <% if notice %>
+      	      <%= notice %>
+	          <% end %>
+	          <% if alert %>
+      	      <%= alert %>
+	          <% end %>
+          </div>
         </div>
       </div>
 
