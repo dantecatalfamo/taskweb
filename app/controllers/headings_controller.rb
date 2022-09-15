@@ -3,9 +3,9 @@ class HeadingsController < ApplicationController
   before_action :set_heading, only: %i[show edit update destroy]
 
   # GET /headings or /headings.json
-  def index
-    @headings = Heading.top_level
-  end
+  # def index
+  #   @headings = Heading.top_level
+  # end
 
   # GET /headings/1 or /headings/1.json
   def show
