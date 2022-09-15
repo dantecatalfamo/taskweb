@@ -30,6 +30,7 @@ class HeadingsController < ApplicationController
   # POST /headings or /headings.json
   def create
     @heading = Heading.new(heading_params)
+    @heading.user = current_user
 
     @heading.notebook_id = @heading.parent.notebook_id if @heading.parent_id
 
@@ -74,7 +75,7 @@ class HeadingsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_heading
-    @heading = Heading.find(params[:id])
+    @heading = Heading.find_by!(id: params[:id], user: current_user)
   end
 
   # Only allow a list of trusted parameters through.
