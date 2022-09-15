@@ -45,17 +45,19 @@
             <%= yield %>
           </div>
         </div>
-        <div class="col-12 col-lg-auto order-first order-lg-last" data-home-target="agenda">
-          <div class="row">
-            <div class="col">
-              <div class="card shadow-sm p-3 pb-0">
-                <%= turbo_frame_tag "agenda" do %>
-                  <%= render "headings/agenda", agenda_dates: Heading.agenda_dates %>
-                <% end %>
+        <% if logged_in? %>
+          <div class="col-12 col-lg-auto order-first order-lg-last" data-home-target="agenda">
+            <div class="row">
+              <div class="col">
+                <div class="card shadow-sm p-3 pb-0">
+                  <%= turbo_frame_tag "agenda" do %>
+                    <%= render "headings/agenda", agenda_dates: Heading.agenda_dates %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </body>

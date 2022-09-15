@@ -1,4 +1,5 @@
 class HeadingsController < ApplicationController
+  before_action :authorize
   before_action :set_heading, only: %i[show edit update destroy]
 
   # GET /headings or /headings.json
