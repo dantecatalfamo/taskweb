@@ -17,6 +17,14 @@
           <nav class="navbar bg-body card">
             <div class="container-fluid">
               <%= link_to "Taskweb", home_path, class: "navbar-brand", data: { turbo_frame: "notebooks" } %>
+              <% if logged_in? %>
+                <%= current_user&.username %>
+                <%= form_with(url: logout_path, method: :delete) do |form| %>
+                  <%= form.submit "Logout", class: "btn btn-outline-secondary" %>
+                <% end %>
+              <% else %>
+                <%= link_to "Login", login_path, class: "btn btn-outline-primary" %>
+              <% end %>
             </div>
           </nav>
           <div>
@@ -33,6 +41,7 @@
       <div class="row gx-3" data-controller="home">
         <div class="col-12 col-lg" data-home-target="headings">
           <div class="card p-3 shadow-sm">
+            <%= session.to_h %>
             <%= yield %>
           </div>
         </div>
