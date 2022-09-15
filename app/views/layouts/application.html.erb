@@ -51,7 +51,7 @@
               <div class="col">
                 <div class="card shadow-sm p-3 pb-0">
                   <%= turbo_frame_tag "agenda" do %>
-                    <%= render "headings/agenda", agenda_dates: Heading.agenda_dates %>
+                    <%= render "headings/agenda", agenda_dates: Heading.where(user: current_user).agenda_dates %>
                   <% end %>
                 </div>
               </div>
