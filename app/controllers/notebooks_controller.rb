@@ -3,7 +3,7 @@ class NotebooksController < ApplicationController
 
   # GET /notebooks or /notebooks.json
   def index
-    @notebooks = Notebook.all
+    @notebooks = current_user&.notebooks || []
   end
 
   # GET /notebooks/1 or /notebooks/1.json
