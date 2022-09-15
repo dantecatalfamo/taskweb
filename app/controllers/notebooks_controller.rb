@@ -61,7 +61,7 @@ class NotebooksController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_notebook
-    @notebook = Notebook.find(params[:id])
+    @notebook = Notebook.find_by!(id: params[:id], user: current_user)
   end
 
   # Only allow a list of trusted parameters through.
