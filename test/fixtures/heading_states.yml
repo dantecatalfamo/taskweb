@@ -4,12 +4,15 @@ todo:
   name: TODO
   done: false
   color: '#e01b24'
+  user: one
 
 wip:
   name: WIP
   done: false
+  user: one
 
 done:
   name: DONE
   done: true
   color: '#26a269'
+  user: one

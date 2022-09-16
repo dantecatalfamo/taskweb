@@ -7,11 +7,11 @@ class HeadingTest < ActiveSupport::TestCase
   end
 
   test 'should create empty heading' do
-    assert Heading.new(notebook_id: notebooks(:one).id).save
+    assert Heading.new(notebook_id: notebooks(:one).id, user: users(:one)).save
   end
 
   test 'should set closed_at properly' do
-    heading = Heading.new(notebook_id: notebooks(:one).id, heading_state_id: heading_states(:todo))
+    heading = Heading.new(notebook_id: notebooks(:one).id, heading_state_id: heading_states(:todo), user: users(:one))
     heading.save!
     assert_not heading.closed_at
     heading.state = heading_states(:done)

@@ -6,6 +6,7 @@ one:
   deadline: 2022-05-27 10:44:21
   depth: 1
   notebook: one
+  user: one
 
 two:
   title: MyString
@@ -14,6 +15,7 @@ two:
   scheduled: 2022-05-27 10:44:21
   depth: 2
   notebook: one
+  user: one
 
 three:
   title: MyString
@@ -24,6 +26,7 @@ three:
   scheduled: 2022-05-27 10:44:21
   depth: 2
   notebook: one
+  user: one
 
 four:
   title: MyString
@@ -34,6 +37,7 @@ four:
   scheduled: nil
   depth: 2
   notebook: one
+  user: one
   closed_at: 2022-05-27 10:44:21
 
 src_block:
@@ -46,6 +50,7 @@ src_block:
     \#+END_SRC
     after text
   notebook: one
+  user: one
 
 bare_url:
   title: MyString
@@ -54,3 +59,4 @@ bare_url:
     some text
     https://example.com
   notebook: one
+  user: one

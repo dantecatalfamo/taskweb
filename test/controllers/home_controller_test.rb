@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    post login_url, params: { login: { username: users(:one).username, password: 'secret' } }
+  end
+
   test 'should get home' do
     get home_url
     assert_response :success

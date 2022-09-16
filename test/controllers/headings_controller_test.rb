@@ -3,12 +3,14 @@ require 'test_helper'
 class HeadingsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @heading = headings(:three)
+    post login_url, params: { login: { username: users(:one).username, password: 'secret' } }
   end
 
-  test 'should get index' do
-    get headings_url
-    assert_response :success
-  end
+  # No index for headings
+  # test 'should get index' do
+  #   get headings_url
+  #   assert_response :success
+  # end
 
   test 'should get new' do
     get new_heading_url
@@ -70,8 +72,9 @@ class HeadingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get headings index org' do
-    get headings_url(format: :org)
-    assert_response :success
-  end
+  # No index for headings
+  # test 'should get headings index org' do
+  #   get headings_url(format: :org)
+  #   assert_response :success
+  # end
 end

@@ -3,6 +3,7 @@ require 'test_helper'
 class NotebooksControllerTest < ActionDispatch::IntegrationTest
   setup do
     @notebook = notebooks(:one)
+    post login_url, params: { login: { username: users(:one).username, password: 'secret' } }
   end
 
   test 'should get index' do
