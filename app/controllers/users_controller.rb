@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorize_admin, only: %i[index create]
   before_action :set_user, only: %i[show edit update destroy]
 
   # GET /users or /users.json
@@ -36,6 +37,11 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    if user_params[:admin] && !admin?
+      flash.now[:notice] = "Cannot set self as admin"
+      render :edit, status: :unprocessable_entity
+      return
+    end
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to user_url(@user), notice: 'User was successfully updated.' }
@@ -62,6 +68,7 @@ class UsersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+    authorize_admin if @user != current_user
   end
 
   # Only allow a list of trusted parameters through.
