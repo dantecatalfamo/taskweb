@@ -1,12 +1,13 @@
 <div id="<%= dom_id heading_state %>">
-  <p>
-    <strong>Name:</strong>
-    <strong><span style="color: <%= heading_state.color %>"><%= heading_state.name %></span></strong>
-  </p>
+  <ul class="list-unstyled">
+    <li>
+      <strong>Name:</strong>
+      <strong><span style="color: <%= heading_state.color %>"><%= heading_state.name %></span></strong>
+    </li>
 
-  <p>
-    <strong>Done:</strong>
-    <%= heading_state.done %>
-  </p>
-
+    <li>
+      <strong>Done:</strong>
+      <%= heading_state.done %>
+    </li>
+  </ul>
 </div>

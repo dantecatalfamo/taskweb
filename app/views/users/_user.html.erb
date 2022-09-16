@@ -1,7 +1,22 @@
 <div id="<%= dom_id user %>">
-  <p>
-    <strong>Username:</strong>
-    <%= user.username %>
-  </p>
-
+  <ul class="list-unstyled">
+    <li>
+      <strong>Username:</strong>
+      <%= user.username %>
+    </li>
+  </li>
+  <li>
+    <strong>Notebooks:</strong>
+    <%= user.notebooks.count %>
+  </li>
+  <li>
+    <strong>Headings:</strong>
+    <%= user.headings.count %>
+  </li>
+  <% if admin? %>
+    <li>
+      <strong>Admin:</strong>
+      <%= user.admin %>
+    </li>
+  <% end %>
 </div>

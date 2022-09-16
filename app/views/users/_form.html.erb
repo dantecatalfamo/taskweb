@@ -11,27 +11,30 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username %>
+  <div class="mb-2">
+    <%= form.label :username, class: "form-label" %>
+    <%= form.text_field :username, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password %>
+  <div class="mb-2">
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :password_confirmation, style: "display: block" %>
-    <%= form.password_field :password_confirmation %>
+  <div class="mb-2">
+    <%= form.label :password_confirmation, class: "form-label" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :admin %>
-    <%= form.check_box :admin %>
-  </div>
+  <% if admin? %>
+    <div class="mb-2">
+      <%= form.label :admin, class: "form-check-label" %>
+      <%= form.check_box :admin, class: "form-check-input" %>
+    </div>
+  <% end %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", user, class: "btn btn-outline-secondary" %>
   </div>
 <% end %>
