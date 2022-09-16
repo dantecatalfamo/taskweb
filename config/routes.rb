@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get '/agenda', to: 'headings#agenda'
 
-  get '/', to: 'notebooks#index', as: 'home'
+  get '/', to: 'home#home', as: 'home'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
