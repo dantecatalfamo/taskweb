@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.create(username: 'admin', password: '1')
+User.create(username: 'admin', password: '1', admin: true)
 HeadingState.create(
   [
     { name: 'TODO', done: false, color: '#e01b24', user: User.first },
@@ -14,5 +14,5 @@ HeadingState.create(
     { name: 'DONE', done: true,  color: '#26a269', user: User.first }
   ]
 )
-Notebook.create(title: "Notebook1")
-Heading.create(notebook: Notebook.first, title: "Heading 1")
+Notebook.create(title: 'Notebook1')
+Heading.create(notebook: Notebook.first, title: 'Heading 1')
