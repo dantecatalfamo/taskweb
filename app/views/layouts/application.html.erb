@@ -14,19 +14,7 @@
     <div class="container">
       <div class="row mb-3">
         <div class="col">
-          <nav class="navbar bg-body card">
-            <div class="container-fluid">
-              <%= link_to "Taskweb", home_path, class: "navbar-brand", data: { turbo_frame: "notebooks" } %>
-              <% if logged_in? %>
-                <%= current_user&.username %>
-                <%= form_with(url: logout_path, method: :delete) do |form| %>
-                  <%= form.submit "Logout", class: "btn btn-outline-secondary" %>
-                <% end %>
-              <% else %>
-                <%= link_to "Login", login_path, class: "btn btn-outline-primary" %>
-              <% end %>
-            </div>
-          </nav>
+          <%= render "layouts/navbar" %>
           <div>
             <% if notice %>
       	      <%= notice %>
