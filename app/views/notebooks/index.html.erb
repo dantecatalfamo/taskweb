@@ -1,3 +1,21 @@
 <%= turbo_frame_tag "notebooks" do %>
-  <%= render "notebooks/notebooks_index", notebooks: @notebooks %>
+  <ul class="list-unstyled">
+    <% @notebooks.each do |notebook| %>
+      <%= turbo_frame_tag notebook do %>
+        <li class="mb-2">
+          <h4 style="display: inline"><%= link_to notebook.title, notebook, data: { turbo_frame: "notebooks" } %> <small>(<%= notebook.headings.size %>) </small></h4>
+          <%= link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_notebook_path(notebook) %>
+          <%= button_to '<i class="bi bi-x-lg"></i>'.html_safe, notebook, method: :delete,
+             class: "text-danger", style: "border: none; background: none",
+             form: { style: "display: inline",
+               data: { turbo_confirm: "Delete heading \"#{notebook.title}\" and all its headings?"
+             }}
+          %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <div>
+    <%= link_to "New notebook", new_notebook_path, class: "btn btn-primary" %>
+  </div>
 <% end %>
