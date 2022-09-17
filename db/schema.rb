@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_16_033417) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_17_042917) do
   create_table "heading_states", force: :cascade do |t|
     t.string "name"
     t.boolean "done"
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_033417) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.string "pushover_user_key"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

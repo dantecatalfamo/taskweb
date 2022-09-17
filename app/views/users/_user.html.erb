@@ -4,19 +4,22 @@
       <strong>Username:</strong>
       <%= user.username %>
     </li>
-  </li>
-  <li>
-    <strong>Notebooks:</strong>
-    <%= user.notebooks.count %>
-  </li>
-  <li>
-    <strong>Headings:</strong>
-    <%= user.headings.count %>
-  </li>
-  <% if admin? %>
     <li>
-      <strong>Admin:</strong>
-      <%= user.admin %>
+      <strong>Pushover User Key:</strong>
+      <%= user.pushover_user_key %>
     </li>
-  <% end %>
+    <li>
+      <strong>Notebooks:</strong>
+      <%= user.notebooks.count %>
+    </li>
+    <li>
+      <strong>Headings:</strong>
+      <%= user.headings.count %>
+    </li>
+    <% if admin? %>
+      <li>
+        <strong>Admin:</strong>
+        <%= user.admin %>
+      </li>
+    <% end %>
 </div>

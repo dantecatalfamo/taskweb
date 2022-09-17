@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     if user_params[:admin] && !admin?
-      flash.now[:notice] = "Cannot set self as admin"
+      flash.now[:notice] = 'Cannot set self as admin'
       render :edit, status: :unprocessable_entity
       return
     end
@@ -73,6 +73,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :admin)
+    params.require(:user).permit(:username, :password, :password_confirmation, :admin, :pushover_user_key)
   end
 end
