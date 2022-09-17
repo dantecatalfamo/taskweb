@@ -2,10 +2,7 @@
   <div id="heading_states">
     <% @heading_states.each do |heading_state| %>
       <%= render heading_state %>
-      <p>
-        <%= link_to "Show this heading state", heading_state %>
-      </p>
     <% end %>
-    <%= link_to "New heading state", new_heading_state_path %>
+    <%= link_to "New heading state", new_heading_state_path, class: "btn btn-primary" %>
   </div>
 <% end %>

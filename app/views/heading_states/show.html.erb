@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<%= turbo_frame_tag "notebooks" do %>
 
-<%= render @heading_state %>
+  <%= render @heading_state %>
 
-<div>
-  <%= link_to "Edit this heading state", edit_heading_state_path(@heading_state) %> |
-  <%= link_to "Back to heading states", heading_states_path %>
-
-  <%= button_to "Destroy this heading state", @heading_state, method: :delete %>
-</div>
+  <div class="row">
+    <div class="col">
+      <%= link_to "Edit", edit_heading_state_path(@heading_state), class: "btn btn-primary" %>
+      <%= link_to "Back", heading_states_path, class: "btn btn-outline-secondary" %>
+    </div>
+    <div class="col-auto">
+      <%= button_to "Delete", @heading_state, method: :delete, class: "btn btn-outline-danger" %>
+    </div>
+  </div>
+<% end %>

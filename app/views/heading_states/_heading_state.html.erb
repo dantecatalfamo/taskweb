@@ -1,13 +1,20 @@
 <div id="<%= dom_id heading_state %>">
-  <ul class="list-unstyled">
-    <li>
-      <strong>Name:</strong>
-      <strong><span style="color: <%= heading_state.color %>"><%= heading_state.name %></span></strong>
-    </li>
+  <div class="row">
+    <div class="col">
+      <ul class="list-unstyled">
+        <li>
+          <strong>Name:</strong>
+          <strong><span style="color: <%= heading_state.color %>"><%= heading_state.name %></span></strong>
+        </li>
 
-    <li>
-      <strong>Done:</strong>
-      <%= heading_state.done %>
-    </li>
+        <li>
+          <strong>Done:</strong>
+          <%= heading_state.done %>
+        </li>
+    </div>
+    <div class="col-auto">
+      <%= link_to "Edit", edit_heading_state_path(heading_state), class: "btn btn-outline-primary" %>
+    </div>
+  </div>
   </ul>
 </div>
