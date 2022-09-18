@@ -61,7 +61,7 @@ class Heading < ApplicationRecord
   end
 
   def pushover_notify
-    PushoverHeading.call(self)
+    PushoverNotifyJob.perform_later(self)
   end
 
   protected
