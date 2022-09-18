@@ -1,6 +1,6 @@
 require 'net/https'
 
-class Pushover < ApplicationService
+class PushoverHeading < ApplicationService
   def initialize(heading)
     @heading = heading
   end
@@ -18,7 +18,8 @@ class Pushover < ApplicationService
       token: Rails.application.credentials.pushover_token,
       user: user_key,
       title: @heading.title,
-      message: message
+      message: message,
+      url: Rails.application.routes.url_helpers.heading_url(@heading, host: 'example.com')
     }
     req.set_form_data(data)
     res = Net::HTTP.new(url.host, url.port)

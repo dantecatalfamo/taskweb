@@ -20,7 +20,9 @@ class Heading < ApplicationRecord
   scope :not_todo_or_done, -> { left_joins(:state).where(state: nil).or(where(state: { done: false })) }
   scope :dates_not_done,   -> { dates.not_todo_or_done }
   scope :dates_until,      ->(end_date) { where(deadline: ..end_date).or(where(scheduled: ..end_date)) }
-  scope :dates_between,    ->(start_date, end_date) { where(deadline: start_date..end_date).or(where(scheduled: start_date..end_date)) }
+  scope :dates_between,    lambda { |start_date, end_date|
+                             where(deadline: start_date..end_date).or(where(scheduled: start_date..end_date))
+                           }
 
   DateHeadings = Struct.new(:date, :headings)
 
@@ -56,6 +58,10 @@ class Heading < ApplicationRecord
     elsif state&.done && !old_state&.done
       self.closed_at = Time.now
     end
+  end
+
+  def pushover_notify
+    PushoverHeading.call(self)
   end
 
   protected
