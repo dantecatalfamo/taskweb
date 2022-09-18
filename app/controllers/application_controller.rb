@@ -20,6 +20,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_admin
-    redirect_to home_path if !admin?
+    redirect_to home_path unless admin?
   end
 end
