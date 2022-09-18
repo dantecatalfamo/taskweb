@@ -4,14 +4,14 @@
       <h2>Welcome back!</h2>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class="row gy-2">
+    <div class="col-12 col-md">
       <%= form.text_field :username, placeholder: "Username", class: "form-control", autofocus: true %>
     </div>
-    <div class="col">
+    <div class="col-12 col-md">
       <%= form.password_field :password, placeholder: "Password", class: "form-control" %>
     </div>
-    <div class="col-auto">
+    <div class="col-12 col-md-auto">
       <%= form.submit "Login", class: "btn btn-primary" %>
     </div>
   </div>
