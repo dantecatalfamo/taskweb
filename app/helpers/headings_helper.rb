@@ -14,6 +14,8 @@ module HeadingsHelper
   STRIKE_THROUGH_REGEX = create_markup_regex(/\+/)
   CODE_REGEX = create_markup_regex(/~/)
   VERBATIM_REGEX = create_markup_regex(/=/)
+  UNCHECKED_BOX = "- [ ]"
+  CHECKED_BOX = /- \[[xX]\]/
 
   def depth_color(depth)
     "hsl(#{depth * 75 % 360}, 70%, 50%)"
@@ -99,6 +101,10 @@ module HeadingsHelper
       tag.code(Regexp.last_match(1), class: 'border border-danger px-1 bg-light rounded')
     end.gsub(VERBATIM_REGEX) do
       tag.samp(Regexp.last_match(1))
+    end.gsub(UNCHECKED_BOX) do
+      tag.input(type: :checkbox, disabled: true)
+    end.gsub(CHECKED_BOX) do
+      tag.input(type: :checkbox, checked: true, disabled: true)
     end
   end
 end
