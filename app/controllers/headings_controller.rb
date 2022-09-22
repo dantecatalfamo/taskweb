@@ -25,6 +25,10 @@ class HeadingsController < ApplicationController
 
   def agenda
     @agenda_dates = Heading.where(user: current_user).agenda_dates
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # POST /headings or /headings.json
