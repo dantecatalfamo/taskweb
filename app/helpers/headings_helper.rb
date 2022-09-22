@@ -60,10 +60,20 @@ module HeadingsHelper
     "#{depth_spaces(heading.depth, heading.body).rstrip}"
   end
 
+  def org_properties(heading)
+    drawer = <<~EOF
+    :PROPERTIES:
+    :ID:       #{heading.org_id}
+    :END:
+    EOF
+    depth_spaces(heading.depth, drawer)
+  end
+
   def org_heading_render(heading)
     components = []
     components << "#{org_headline(heading)}"
     components << "#{org_dateline(heading)}" if heading.dateline?
+    components << org_properties(heading)
     components << "#{org_body(heading)}" if heading.body.present?
     components.join("\n") + "\n"
   end

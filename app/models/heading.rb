@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class Heading < ApplicationRecord
   belongs_to :parent, class_name: 'Heading', foreign_key: :parent_id, required: false, counter_cache: true
   belongs_to :state, class_name: 'HeadingState', foreign_key: :heading_state_id, required: false
@@ -7,6 +9,7 @@ class Heading < ApplicationRecord
 
   before_save :set_depth
   before_save :set_closed_at, if: :will_save_change_to_heading_state_id?
+  before_create :set_org_id
   after_save :fix_children_depth
 
   scope :top_level,  -> { where(parent: nil) }
@@ -86,5 +89,9 @@ class Heading < ApplicationRecord
                  else
                    1 + parent.depth
                  end
+  end
+
+  def set_org_id
+    self.org_id = SecureRandom.uuid
   end
 end
