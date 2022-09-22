@@ -79,7 +79,12 @@ class HeadingsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_heading
-    @heading = Heading.find_by!(id: params[:id], user: current_user)
+    @heading = if params[:id].match?(/\D/)
+                 # Non-numeic character, probably an org_id
+                 Heading.find_by!(org_id: params[:id], user: current_user)
+               else
+                 Heading.find_by!(id: params[:id], user: current_user)
+               end
   end
 
   # Only allow a list of trusted parameters through.
