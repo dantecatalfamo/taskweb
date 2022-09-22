@@ -7,6 +7,7 @@ one:
   depth: 1
   notebook: one
   user: one
+  org_id: <%= SecureRandom.uuid %>
 
 two:
   title: MyString
@@ -16,6 +17,7 @@ two:
   depth: 2
   notebook: one
   user: one
+  org_id: <%= SecureRandom.uuid %>
 
 three:
   title: MyString
@@ -27,6 +29,7 @@ three:
   depth: 2
   notebook: one
   user: one
+  org_id: <%= SecureRandom.uuid %>
 
 four:
   title: MyString
@@ -39,6 +42,7 @@ four:
   notebook: one
   user: one
   closed_at: 2022-05-27 10:44:21
+  org_id: <%= SecureRandom.uuid %>
 
 src_block:
   title: MyString
@@ -51,6 +55,7 @@ src_block:
     after text
   notebook: one
   user: one
+  org_id: <%= SecureRandom.uuid %>
 
 bare_url:
   title: MyString
@@ -60,3 +65,4 @@ bare_url:
     https://example.com
   notebook: one
   user: one
+  org_id: <%= SecureRandom.uuid %>
