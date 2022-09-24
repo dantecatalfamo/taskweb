@@ -95,10 +95,10 @@ module HeadingsHelper
       when /https?/
         link = match[:protocol] + ":" +  match[:link]
         title = match[:title] || link
-        tag.a(title, href: link)
+        tag.a(title, href: link, data: { turbo_frame: "_top" })
       when /id/i
         title = match[:title] || link
-        tag.a(title, href: heading_url(match[:link]))
+        tag.a(title, href: heading_url(match[:link]), data: { turbo_frame: "_top" })
       end
     end.gsub(BOLD_REGEX) do
       tag.strong(Regexp.last_match(1))
