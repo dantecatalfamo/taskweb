@@ -96,6 +96,9 @@ module HeadingsHelper
         link = match[:protocol] + ":" +  match[:link]
         title = match[:title] || link
         tag.a(title, href: link)
+      when /id/i
+        title = match[:title] || link
+        tag.a(title, href: heading_url(match[:link]))
       end
     end.gsub(BOLD_REGEX) do
       tag.strong(Regexp.last_match(1))
