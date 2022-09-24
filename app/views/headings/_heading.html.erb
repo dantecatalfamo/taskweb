@@ -11,8 +11,9 @@
         <small>
           (<%= heading.children.size %>)
         </small>
-        <%= link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_heading_path(heading) %>
-        <%= link_to '<i class="bi bi-arrows-angle-expand"></i>'.html_safe, heading, data:  { turbo_frame: "notebooks" } %>
+        <%= link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_heading_path(heading), title: "Edit" %>
+        <%= link_to '<i class="bi bi-arrows-angle-expand"></i>'.html_safe, heading, title: "Expand", data:  { turbo_frame: "notebooks" } %>
+        <%= link_to '<i class="bi bi-link-45deg"></i>'.html_safe, "javascript:navigator.clipboard.writeText('[[id:#{heading.org_id}][#{heading.title}]]')", title: "Copy org link" %>
         <%= button_to '<i class="bi bi-x-lg"></i>'.html_safe, heading, class: "text-danger", style: "border: none; background: none", form: { style: "display: inline", data: { turbo_confirm: "Delete heading \"#{heading.title}\" and all its sub-headings?" }}, method: :delete %>
       </summary>
       <div class="overflow-auto">
