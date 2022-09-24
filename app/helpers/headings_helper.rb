@@ -16,6 +16,8 @@ module HeadingsHelper
   VERBATIM_REGEX = create_markup_regex(/=/)
   UNCHECKED_BOX = "- [ ]"
   CHECKED_BOX = /- \[[xX]\]/
+  LINK_REGEX = /\[\[(?<protocol>\w+):(?<link>[^\]]*)(\]\[(?<title>.*))?\]\]/
+
 
   def depth_color(depth)
     "hsl(#{depth * 75 % 360}, 70%, 50%)"
@@ -87,8 +89,14 @@ module HeadingsHelper
       tag.pre(class: 'border py-2 rounded bg-light') do
         tag.code(Regexp.last_match(2), class: ("language-#{Regexp.last_match(1)}" if Regexp.last_match(1).present?))
       end
-    end.gsub(URI::DEFAULT_PARSER.make_regexp) do |match|
-      tag.a(match, href: match)
+    end.gsub(LINK_REGEX) do
+      match = Regexp.last_match
+      case match[:protocol]
+      when /https?/
+        link = match[:protocol] + ":" +  match[:link]
+        title = match[:title] || link
+        tag.a(title, href: link)
+      end
     end.gsub(BOLD_REGEX) do
       tag.strong(Regexp.last_match(1))
     end.gsub(ITALIC_REGEX) do
