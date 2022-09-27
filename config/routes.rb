@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/agenda', to: 'headings#agenda'
+  get '/todos',  to: 'headings#todos'
 
   get '/', to: 'home#home', as: 'home'
   get '/login', to: 'sessions#new'

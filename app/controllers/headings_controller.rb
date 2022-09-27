@@ -31,6 +31,10 @@ class HeadingsController < ApplicationController
     end
   end
 
+  def todos
+    @headings = Heading.where(user: current_user).not_done
+  end
+
   # POST /headings or /headings.json
   def create
     @heading = Heading.new(heading_params)

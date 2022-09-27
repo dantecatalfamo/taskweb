@@ -39,14 +39,16 @@
         <% end %>
 
         <p style="white-space: pre-wrap"><%= raw process_org_body(heading.body) %></p>
-        
-        <% heading.children.each do |child| %>
-          <%= render child %>
-        <% end %>
 
-        <%= form_with(model: Heading.new(parent_id: heading.id)) do |form| %>
-          <%= form.text_field :title, placeholder: '+', style: 'border: none', class: "mb-1 ms-1", autocomplete: 'off' %>
-          <%= form.hidden_field :parent_id %>
+        <% unless local_assigns[:shallow] %>
+          <% heading.children.each do |child| %>
+            <%= render child %>
+          <% end %>
+
+          <%= form_with(model: Heading.new(parent_id: heading.id)) do |form| %>
+            <%= form.text_field :title, placeholder: '+', style: 'border: none', class: "mb-1 ms-1", autocomplete: 'off' %>
+            <%= form.hidden_field :parent_id %>
+          <% end %>
         <% end %>
       </div>
 
