@@ -57,12 +57,12 @@ src_block:
   user: one
   org_id: <%= SecureRandom.uuid %>
 
-bare_url:
+org_link:
   title: MyString
   depth: 1
   body: |
     some text
-    https://example.com
+    [[https://example.com]]
   notebook: one
   user: one
   org_id: <%= SecureRandom.uuid %>

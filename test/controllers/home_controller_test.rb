@@ -7,11 +7,11 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get home' do
     get home_url
-    assert_response :success
+    assert_redirected_to notebooks_path
   end
 
   test 'should show notebooks' do
-    get home_url
+    get notebooks_url
 
     assert_select '#notebooks' do
       assert_select "\##{dom_id notebooks(:one)}" do
@@ -21,7 +21,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show agenda' do
-    get home_url
+    get notebooks_url
 
     assert_select '#agenda' do
       assert_select '#agenda-dates' do
