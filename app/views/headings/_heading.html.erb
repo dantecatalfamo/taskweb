@@ -45,8 +45,8 @@
             <%= render child %>
           <% end %>
 
-          <%= form_with(model: Heading.new(parent_id: heading.id)) do |form| %>
-            <%= form.text_field :title, placeholder: '+', style: 'border: none', class: "mb-1 ms-1", autocomplete: 'off' %>
+          <%= form_with(model: Heading.new(parent_id: heading.id), html: { class: 'd-flex' }) do |form| %>
+            <%= form.text_field :title, placeholder: '+', style: 'border: none', class: "mb-1 ms-1 me-1 flex-grow-1", autocomplete: 'off' %>
             <%= form.hidden_field :parent_id %>
           <% end %>
         <% end %>
