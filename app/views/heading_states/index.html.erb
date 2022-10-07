@@ -1,8 +1,6 @@
-<%= turbo_frame_tag "notebooks" do %>
-  <div id="heading_states">
-    <% @heading_states.each do |heading_state| %>
-      <%= render heading_state %>
-    <% end %>
-    <%= link_to "New heading state", new_heading_state_path, class: "btn btn-primary" %>
-  </div>
-<% end %>
+<div id="heading_states">
+  <% @heading_states.each do |heading_state| %>
+    <%= render heading_state %>
+  <% end %>
+  <%= link_to "New heading state", new_heading_state_path, class: "btn btn-primary" %>
+</div>

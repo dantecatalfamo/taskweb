@@ -1,10 +1,8 @@
-<%= turbo_frame_tag "notebooks" do %>
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to "Notebooks", notebooks_path %></li>
-      <li class="breadcrumb-item active"><%= @notebook.title %></li>
-    </ol>
-  </nav>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Notebooks", notebooks_path %></li>
+    <li class="breadcrumb-item active"><%= @notebook.title %></li>
+  </ol>
+</nav>
 
-  <%= render @notebook %>
-<% end %>
+<%= render @notebook %>

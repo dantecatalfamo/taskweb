@@ -1,11 +1,9 @@
-<%= turbo_frame_tag "notebooks" do %>
-  <h1>New heading state</h1>
-  
-  <%= render "form", heading_state: @heading_state %>
+<h1>New heading state</h1>
 
-  <br>
+<%= render "form", heading_state: @heading_state %>
 
-  <div>
-    <%= link_to "Back to heading states", heading_states_path %>
-  </div>
-<% end %>
+<br>
+
+<div>
+  <%= link_to "Back to heading states", heading_states_path %>
+</div>

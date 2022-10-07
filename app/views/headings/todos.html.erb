@@ -1,5 +1,3 @@
-<%= turbo_frame_tag "notebooks" do %>
-  <% @headings.each do |heading| %>
-    <%= render heading, shallow: true %>
-  <% end %>
+<% @headings.each do |heading| %>
+  <%= render heading, shallow: true %>
 <% end %>

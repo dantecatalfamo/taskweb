@@ -15,13 +15,12 @@
       <div class="row mb-3">
         <div class="col">
           <%= render "layouts/navbar" %>
-          <div>
-            <% if notice %>
-      	      <%= notice %>
-	          <% end %>
-	          <% if alert %>
-      	      <%= alert %>
-	          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div id="flash">
+            <%= render "layouts/flash" %>
           </div>
         </div>
       </div>

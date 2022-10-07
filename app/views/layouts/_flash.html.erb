@@ -1,0 +1,5 @@
+<% flash.each do |type, msg| %>
+  <div class="flash flash-<%= type %> mb-2 border bg-success p-2 rounded">
+    <%= msg %>
+  </div>
+<% end %>

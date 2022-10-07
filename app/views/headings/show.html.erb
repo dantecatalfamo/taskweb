@@ -1,14 +1,12 @@
-<%= turbo_frame_tag "notebooks" do %>
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to "Notebooks", notebooks_path %></li>
-      <li class="breadcrumb-item"><%= link_to @heading.notebook.title, @heading.notebook %></li>
-      <% @breadcrumbs[..-2].each do |breadcrumb| %>
-        <li class="breadcrumb-item"><%= link_to breadcrumb.title, breadcrumb %></li>
-      <% end %>
-      <li class="breadcrumb-item active"><%= @heading.title %></li>
-    </ol>
-  </nav>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Notebooks", notebooks_path %></li>
+    <li class="breadcrumb-item"><%= link_to @heading.notebook.title, @heading.notebook %></li>
+    <% @breadcrumbs[..-2].each do |breadcrumb| %>
+      <li class="breadcrumb-item"><%= link_to breadcrumb.title, breadcrumb %></li>
+    <% end %>
+    <li class="breadcrumb-item active"><%= @heading.title %></li>
+  </ol>
+</nav>
 
-  <%= render @heading %>
-<% end %>
+<%= render @heading %>

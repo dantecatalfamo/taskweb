@@ -1,13 +1,11 @@
-<%= turbo_frame_tag "notebooks" do %>
-  <div id="users">
-    <% @users.each do |user| %>
-      <%= render user %>
-      <p>
-        <%= link_to "Show this user", user %>
-      </p>
-      <hr >
-    <% end %>
-  </div>
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "Show this user", user %>
+    </p>
+    <hr >
+  <% end %>
+</div>
 
-  <%= link_to "New user", new_user_path %>
-<% end %>
+<%= link_to "New user", new_user_path %>
