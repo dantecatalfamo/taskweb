@@ -1,1 +1,6 @@
 <%= turbo_stream.remove @heading %>
+<% if @heading.parent %>
+  <%= turbo_stream.update dom_id(@heading.parent) + '_children_count' do %>
+    (<%= @heading.parent.children.size %>)
+  <% end %>
+<% end %>

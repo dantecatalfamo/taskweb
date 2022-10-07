@@ -8,7 +8,7 @@
           <% end %>
           <%= heading.title %>
         </strong>
-        <small>
+        <small id="<%= dom_id heading %>_children_count">
           (<%= heading.children.size %>)
         </small>
         <%= link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_heading_path(heading), title: "Edit" %>
