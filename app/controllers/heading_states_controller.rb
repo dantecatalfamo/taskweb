@@ -25,7 +25,7 @@ class HeadingStatesController < ApplicationController
 
     respond_to do |format|
       if @heading_state.save
-        format.html { redirect_to heading_state_url(@heading_state), notice: 'Heading state was successfully created.' }
+        format.html { redirect_to heading_states_url, notice: 'Heading state was successfully created.' }
         format.json { render :show, status: :created, location: @heading_state }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class HeadingStatesController < ApplicationController
   def update
     respond_to do |format|
       if @heading_state.update(heading_state_params)
-        format.html { redirect_to heading_state_url(@heading_state), notice: 'Heading state was successfully updated.' }
+        format.html { redirect_to heading_states_url, notice: 'Heading state was successfully updated.' }
         format.json { render :show, status: :ok, location: @heading_state }
       else
         format.html { render :edit, status: :unprocessable_entity }
