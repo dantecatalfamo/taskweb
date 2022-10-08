@@ -3,8 +3,15 @@
     <details data-heading-target="details" data-action="heading#toggle">
       <summary>
         <strong>
-          <% if heading.state %>
-            <span style="color: <%= heading.state.color %>"><%= heading.state.name %></span>
+          <%= turbo_frame_tag "#{dom_id heading}_state" do %>
+            <span style="color: <%= heading.state&.color || 'inherit' %>" data-heading-target="state">
+              <% if heading.state %>                
+                <%= heading.state.name %>
+              <% end %>
+            </span>
+            <%= form_with(model: heading, html: { class: "me-1" ,data: { heading_target: "stateSelection" }, style: "display: none;" }) do |form| %>
+              <%= form.collection_select :heading_state_id, HeadingState.all, :id, :name, include_blank: true, class: "form-control" %>
+            <% end %>
           <% end %>
           <%= heading.title %>
         </strong>
