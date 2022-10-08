@@ -6,6 +6,8 @@
           <span style="color: <%= heading.state&.color || 'inherit' %>" data-heading-target="state">
             <% if heading.state %>
               <%= heading.state.name %>
+            <% else %>
+              <span class="px-2" style="margin-left: -9px"></span>
             <% end %>
           </span>
           <%= form_with(model: heading, html: { class: "me-1" ,data: { heading_target: "stateSelection" }, style: "display: none;" }) do |form| %>
