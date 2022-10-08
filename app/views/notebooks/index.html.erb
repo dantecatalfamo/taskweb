@@ -5,6 +5,7 @@
         <li class="mb-2">
           <h4 style="display: inline"><%= link_to notebook.title, notebook, data: { turbo_frame: "_top" } %> <small>(<%= notebook.headings.size %>) </small></h4>
           <%= link_to '<i class="bi bi-pencil"></i>'.html_safe, edit_notebook_path(notebook) %>
+          <%= link_to '<i class="bi bi-download"></i>'.html_safe, notebook_path(notebook, format: :org) %>
           <%= button_to '<i class="bi bi-x-lg"></i>'.html_safe, notebook, method: :delete,
                class: "text-danger", style: "border: none; background: none",
                form: { style: "display: inline",
