@@ -10,7 +10,8 @@ export default class extends Controller {
       // indentation, add it to the beginning of this line
       const pos = this.element.selectionStart;
       const newlines = this.newlinePositions();
-      const prevLineBegin = newlines.reduce((acc, n) => (n < pos-1 ? n : acc));
+      // Fine previous newline, or -1 if it's the first line
+      const prevLineBegin = newlines.length === 1 ? -1 : newlines.reduce((acc, n) => (n < pos-1 ? n : acc));
       const prevLine = this.element.value.substring(prevLineBegin+1, pos).replace('\n', '');
       // Find the non-word component and uncheck any checkboxes
       const lead = prevLine.match(/^\W*(x\] )?/)[0].replace('[x]', '[ ]');
