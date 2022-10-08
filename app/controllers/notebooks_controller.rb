@@ -7,8 +7,14 @@ class NotebooksController < ApplicationController
     @notebooks = Notebook.where(user: current_user)
   end
 
-  # GET /notebooks/1 or /notebooks/1.json
-  def show; end
+  # GET /notebooks/1 or /notebooks/1.json or /notebooks/1.org
+  def show
+    respond_to do |format|
+      format.html
+      format.json
+      format.org { response.headers['Content-Disposition'] = "filename=\"#{@notebook.title}.org\"" }
+    end
+  end
 
   # GET /notebooks/new
   def new
