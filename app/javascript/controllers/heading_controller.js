@@ -27,8 +27,6 @@ export default class extends Controller {
     if (data.open) {
       this.detailsTarget.open = true;
     }
-    this.stateSelectionTarget.addEventListener('change', (event) => this.stateSelectionSubmit(event));
-    this.stateTarget.addEventListener('click', (event) => this.showStateSelector(event));
   }
 
   toggle(event) {
