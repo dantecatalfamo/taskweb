@@ -16,7 +16,7 @@ export default class extends Controller {
     event.preventDefault();
     this.stateTarget.style.display = 'none';
     this.stateSelectionTarget.style.display = 'inline';
-    this.hideStateSelectorTimeout = window.setTimeout(() => this.hideStateSelector(), 15_000);
+    this.hideStateSelectorTimeout = window.setTimeout(() => this.hideStateSelector(), 10_000);
   }
 
   hideStateSelector() {
