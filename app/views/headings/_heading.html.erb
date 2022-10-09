@@ -17,7 +17,9 @@
           <%= form_with(model: heading, html: { class: "me-1", data: { heading_target: "stateSelection", action: "change->heading#stateSelectionSubmit" }, style: "display: none;" }) do |form| %>
             <%= form.collection_select :heading_state_id, HeadingState.all, :id, :name, include_blank: true, class: "form-control" %>
           <% end %>
-          <%= heading.title %>
+          <%= tag.span class: ("text-muted" if heading.state&.done) do %>
+            <%= heading.title %>
+          <% end %>
         </strong>
         <small id="<%= dom_id heading %>_children_count">
           (<%= heading.children.size %>)
