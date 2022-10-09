@@ -16,6 +16,13 @@ export default class extends Controller {
     event.preventDefault();
     this.stateTarget.style.display = 'none';
     this.stateSelectionTarget.style.display = 'inline';
+    this.hideStateSelectorTimeout = window.setTimeout(() => this.hideStateSelector(), 15_000);
+  }
+
+  hideStateSelector() {
+    this.stateTarget.style.display = '';
+    this.stateSelectionTarget.style.display = 'none';
+    this.hideStateSelectorTimeout = null;
   }
 
   stateSelectionSubmit(event) {
@@ -26,6 +33,12 @@ export default class extends Controller {
     const data = this.getData();
     if (data.open) {
       this.detailsTarget.open = true;
+    }
+  }
+
+  disconnect() {
+    if (this.hideStateSelectorTimeout) {
+      window.clearTimeout(this.hideStateSelectorTimeout);
     }
   }
 
