@@ -1,5 +1,14 @@
 <% flash.each do |type, msg| %>
-  <div class="flash flash-<%= type %> mb-2 border bg-success p-2 rounded">
-    <%= msg %>
+  <div class="flash flash-<%= type %> mb-2 border bg-success p-2 rounded text-white bg-opacity-75" data-controller="flash">
+    <div class="row">
+      <div class="col">
+        <%= msg %>
+      </div>
+      <div class="col-auto me-1">
+        <a href="#" role="button" class="text-reset" data-action="flash#remove">
+          <i class="bi bi-x"></i>
+        </a>
+      </div>
+    </div>
   </div>
 <% end %>
