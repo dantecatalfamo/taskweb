@@ -60,6 +60,7 @@ class NotebooksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to notebooks_url, notice: 'Notebook was successfully destroyed.' }
       format.json { head :no_content }
+      format.turbo_stream
     end
   end
 
