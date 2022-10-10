@@ -13,8 +13,8 @@ export default class extends Controller {
   connect() {
   }
 
-  copy(e) {
-    e.preventDefault();
+  copy(event) {
+    event.preventDefault();
     this.check();
     window.setTimeout(() => this.uncheck(), 2000);
     navigator.clipboard.writeText(`[[id:${this.idValue}][${this.titleValue}]]`);
