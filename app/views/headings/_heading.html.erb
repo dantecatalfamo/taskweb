@@ -33,27 +33,28 @@
         <button role="button" class="border-0" data-action="heading#toggleOptions" style="background: none"><i class="bi bi-three-dots"></i></button>
       </summary>
       <div class="overflow-auto">
-        <% if heading.deadline %>
-          <p>
-            <strong>Deadline:</strong>
-            <%= heading.deadline %>
-          </p>
+        <% if heading.deadline || heading.scheduled || heading.closed_at %>
+          <div class="d-flex flex-column align-items-end font-monospace" style="width: fit-content; font-size: 14px;">
+            <% if heading.deadline %>
+              <div>
+                <strong>Deadline:</strong>
+                <%= heading.deadline %>
+              </div>
+            <% end %>
+            <% if heading.scheduled %>
+              <div>
+                <strong>Scheduled:</strong>
+                <%= heading.scheduled %>
+              </div>
+            <% end %>
+            <% if heading.closed_at %>
+              <div>
+                <strong>Closed:</strong>
+                <%= heading.closed_at %>
+              </div>
+            <% end %>
+          </div>
         <% end %>
-
-        <% if heading.scheduled %>
-          <p>
-            <strong>Scheduled:</strong>
-            <%= heading.scheduled %>
-          </p>
-        <% end %>
-
-        <% if heading.closed_at %>
-          <p>
-            <strong>Closed:</strong>
-            <%= heading.closed_at %>
-          </p>
-        <% end %>
-
         <p style="white-space: pre-wrap"><%= raw process_org_body(heading.body) %></p>
 
         <% unless local_assigns[:shallow] %>
