@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ['details', 'state', 'stateSelection']
+  static targets = ['details', 'state', 'stateSelection', 'options']
   static values = { id: Number }
 
   getData() {
@@ -29,11 +29,21 @@ export default class extends Controller {
     this.stateSelectionTarget.requestSubmit();
   }
 
+  toggleOptions(event) {
+    event.preventDefault();
+    if (this.optionsTarget.style.display === 'none') {
+      this.optionsTarget.style.display = 'inline-block';
+    } else {
+      this.optionsTarget.style.display = 'none';
+    }
+  }
+
   connect() {
     const data = this.getData();
     if (data.open) {
       this.detailsTarget.open = true;
     }
+    this.optionsTarget.style.display = 'none';
   }
 
   disconnect() {
