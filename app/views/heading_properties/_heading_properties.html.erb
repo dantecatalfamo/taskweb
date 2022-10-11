@@ -5,14 +5,16 @@
       <table>
         <tbody>
           <%= render partial: "heading_properties/heading_property", collection: heading.properties %>
+          <%= form_with(model: heading.properties.new, url: heading_heading_properties_path(heading)) do |form| %>
+            <tr>
+              <td><%= form.text_field :key %></td>
+              <td><%= form.text_field :value, autocomplete: 'off' %></td>
+            </tr>
+            <%= form.hidden_field :heading_id %>
+            <%= form.submit style: 'display: none' %>
+          <% end %>
         </tbody>
       </table>
-      <%= form_with(model: heading.properties.new, url: heading_heading_properties_path(heading)) do |form| %>
-        <%= form.text_field :key %>
-        <%= form.text_field :value, autocomplete: 'off' %>
-        <%= form.hidden_field :heading_id %>
-        <%= form.submit style: 'display: none' %>
-      <% end %>
       <span class="font-monospace">END</span>
     </details>
   <% end %>

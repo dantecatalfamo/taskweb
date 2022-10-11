@@ -56,8 +56,9 @@ class HeadingPropertiesController < ApplicationController
     @heading_property.destroy
 
     respond_to do |format|
-      format.html { redirect_to heading_properties_url, notice: 'Heading property was successfully destroyed.' }
+      format.html { redirect_to @heading_property.heading, notice: 'Heading property was successfully destroyed.' }
       format.json { head :no_content }
+      format.turbo_stream
     end
   end
 
