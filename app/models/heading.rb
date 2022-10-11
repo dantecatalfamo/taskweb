@@ -92,6 +92,6 @@ class Heading < ApplicationRecord
   end
 
   def set_org_id
-    self.org_id = SecureRandom.uuid if !org_id.present?
+    self.org_id = SecureRandom.uuid unless org_id.present?
   end
 end
