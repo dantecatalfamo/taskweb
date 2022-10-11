@@ -14,10 +14,9 @@ module HeadingsHelper
   STRIKE_THROUGH_REGEX = create_markup_regex(/\+/)
   CODE_REGEX = create_markup_regex(/~/)
   VERBATIM_REGEX = create_markup_regex(/=/)
-  UNCHECKED_BOX = "- [ ]"
+  UNCHECKED_BOX = '- [ ]'
   CHECKED_BOX = /- \[[xX]\]/
   LINK_REGEX = /\[\[(?<protocol>\w+):(?<link>[^\]]*)(\]\[(?<title>.*))?\]\]/
-
 
   def depth_color(depth)
     "hsl(#{depth * 75 % 360}, 70%, 50%)"
@@ -66,9 +65,17 @@ module HeadingsHelper
 
   def org_properties(heading)
     drawer = <<~EOF
-    :PROPERTIES:
-    :ID:       #{heading.org_id}
-    :END:
+      :PROPERTIES:
+      :ID:       #{heading.org_id}
+    EOF
+
+    heading.properties.all.each do |property|
+      spaces = ' ' * [1, (9 - property.key.length)].max
+      drawer << ":#{property.key}:#{spaces}#{property.value}\n"
+    end
+
+    drawer << <<~EOF
+      :END:
     EOF
     depth_spaces(heading.depth, drawer)
   end
@@ -93,12 +100,12 @@ module HeadingsHelper
       match = Regexp.last_match
       case match[:protocol]
       when /https?/
-        link = match[:protocol] + ":" +  match[:link]
+        link = match[:protocol] + ':' + match[:link]
         title = match[:title] || link
-        tag.a(title, href: link, data: { turbo_frame: "_top" })
+        tag.a(title, href: link, data: { turbo_frame: '_top' })
       when /id/i
         title = match[:title] || link
-        tag.a(title, href: heading_url(match[:link]), data: { turbo_frame: "_top" })
+        tag.a(title, href: heading_url(match[:link]), data: { turbo_frame: '_top' })
       end
     end.gsub(BOLD_REGEX) do
       tag.strong(Regexp.last_match(1))
