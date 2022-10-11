@@ -77,6 +77,11 @@ class HeadingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get heading by org id' do
+    get heading_url(headings(:one).org_id)
+    assert_response :success
+  end
+
   # No index for headings
   # test 'should get headings index org' do
   #   get headings_url(format: :org)
