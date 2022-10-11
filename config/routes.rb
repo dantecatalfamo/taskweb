@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  # resources :heading_properties
   resources :users
   resources :notebooks
   resources :heading_states
-  resources :headings
+  resources :headings do
+    resources :heading_properties, shallow: true, path: 'properties'
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

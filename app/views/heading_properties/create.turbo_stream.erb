@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "#{dom_id(@heading)}_properties" do %>
+  <%= render "heading_properties", heading: @heading, open: true %>
+<% end %>

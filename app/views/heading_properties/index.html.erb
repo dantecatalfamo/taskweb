@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Heading properties</h1>
+
+<div id="heading_properties">
+  <% @heading_properties.each do |heading_property| %>
+    <%= render heading_property %>
+    <p>
+      <%= link_to "Show this heading property", heading_property %>
+    </p>
+  <% end %>
+</div>
+
+<%#= link_to "New heading property", new_heading_property_path %>

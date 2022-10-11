@@ -16,3 +16,26 @@
 
 @import "bootstrap";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
+
+.heading-properties {
+  // font-size: 14px;
+
+  * {
+    font-size: 15px;
+  }
+
+  summary, td:nth-child(1), span {
+    &:after {
+      content: ':';
+      position: relative;
+      bottom: 2px;
+    }
+
+    &:before {
+      content: ':';
+      position: relative;
+      display: inline-block;
+      bottom: 2px;
+    }
+  }
+}

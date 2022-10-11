@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @heading_property %>
+
+<div>
+  <%= link_to "Edit this heading property", edit_heading_property_path(@heading_property) %> |
+  <%= link_to "Back to heading properties", heading_properties_path %>
+
+  <%= button_to "Destroy this heading property", @heading_property, method: :delete %>
+</div>

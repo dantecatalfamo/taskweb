@@ -1,0 +1,2 @@
+module HeadingPropertiesHelper
+end

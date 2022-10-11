@@ -6,6 +6,7 @@ class Heading < ApplicationRecord
   belongs_to :notebook
   belongs_to :user
   has_many :children, class_name: 'Heading', foreign_key: :parent_id, dependent: :destroy
+  has_many :properties, class_name: 'HeadingProperty', dependent: :destroy
 
   before_save :set_depth
   before_save :set_closed_at, if: :will_save_change_to_heading_state_id?

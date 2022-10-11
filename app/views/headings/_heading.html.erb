@@ -55,6 +55,9 @@
             <% end %>
           </div>
         <% end %>
+
+        <%= render "heading_properties/heading_properties", heading: heading %>
+
         <p style="white-space: pre-wrap"><%= raw process_org_body(heading.body) %></p>
 
         <% unless local_assigns[:shallow] %>

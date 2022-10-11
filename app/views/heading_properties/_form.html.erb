@@ -1,0 +1,32 @@
+<%= form_with(model: heading_property) do |form| %>
+  <% if heading_property.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(heading_property.errors.count, "error") %> prohibited this heading_property from being saved:</h2>
+
+      <ul>
+        <% heading_property.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :heading_id, style: "display: block" %>
+    <%= form.text_field :heading_id %>
+  </div>
+
+  <div>
+    <%= form.label :key, style: "display: block" %>
+    <%= form.text_field :key %>
+  </div>
+
+  <div>
+    <%= form.label :value, style: "display: block" %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
