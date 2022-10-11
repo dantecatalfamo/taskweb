@@ -21,7 +21,7 @@ class HeadingStatesControllerTest < ActionDispatch::IntegrationTest
       post heading_states_url, params: { heading_state: { done: @heading_state.done, name: @heading_state.name } }
     end
 
-    assert_redirected_to heading_state_url(HeadingState.last)
+    assert_redirected_to heading_states_url
   end
 
   test 'should show heading_state' do
@@ -37,7 +37,7 @@ class HeadingStatesControllerTest < ActionDispatch::IntegrationTest
   test 'should update heading_state' do
     patch heading_state_url(@heading_state),
           params: { heading_state: { done: @heading_state.done, name: @heading_state.name } }
-    assert_redirected_to heading_state_url(@heading_state)
+    assert_redirected_to heading_states_url
   end
 
   test 'should destroy heading_state' do
