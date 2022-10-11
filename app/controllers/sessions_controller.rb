@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authorize, only: %i[new create]
+
   def create
     Rails.logger.info("Attempting to login as #{session_params[:username]}")
     @user = User.find_by(username: session_params[:username])

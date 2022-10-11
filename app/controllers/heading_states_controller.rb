@@ -1,5 +1,4 @@
 class HeadingStatesController < ApplicationController
-  before_action :authorize
   before_action :set_heading_state, only: %i[show edit update destroy]
 
   # GET /heading_states or /heading_states.json
