@@ -4,6 +4,10 @@
     <%= form_with(model: HeadingProperty.new(heading: heading), url: heading_heading_properties_path(heading)) do |form| %>
       <table>
         <tbody>
+          <tr>
+            <td class="font-monospace ps-0 heading_property_key">ID</td>
+            <td class="font-monospace"><%= heading.org_id %></td>
+          </tr>
           <%= render partial: "heading_properties/heading_property", collection: heading.properties %>
           <tr>
             <td><%= form.text_field :key, class: 'font-monospace', placeholder: 'Key', size: 12 %></td>
