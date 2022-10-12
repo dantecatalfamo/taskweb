@@ -1,9 +1,9 @@
 require 'securerandom'
 
 class Heading < ApplicationRecord
-  belongs_to :parent, class_name: 'Heading', foreign_key: :parent_id, required: false, counter_cache: true
+  belongs_to :parent, class_name: 'Heading', foreign_key: :parent_id, required: false, counter_cache: true, touch: true
   belongs_to :state, class_name: 'HeadingState', foreign_key: :heading_state_id, required: false
-  belongs_to :notebook
+  belongs_to :notebook, touch: true
   belongs_to :user
   has_many :children, class_name: 'Heading', foreign_key: :parent_id, dependent: :destroy
   has_many :properties, class_name: 'HeadingProperty', dependent: :destroy

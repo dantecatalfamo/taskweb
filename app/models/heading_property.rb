@@ -1,5 +1,5 @@
 class HeadingProperty < ApplicationRecord
-  belongs_to :heading
+  belongs_to :heading, touch: true
 
   before_save :upcase_key
 
