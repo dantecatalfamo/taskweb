@@ -1,7 +1,6 @@
 <%= turbo_frame_tag notebook do %>
-  <% @notebook.headings.top_level.each do |heading| %>
-    <%= render heading %>
-  <% end %>
+  <% headings = @notebook.headings.includes(:state, :properties) %>
+  <%= render collection: headings.top_level, partial: "headings/heading", cached: true %>
 
   <%= form_with(model: Heading.new(notebook_id: @notebook.id), html: { class: 'd-flex' }) do |form| %>
     <%= form.text_field :title, placeholder: '+', style: 'border: none', class: 'flex-grow-1', autocomplete: 'off' %>
