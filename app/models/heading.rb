@@ -31,7 +31,7 @@ class Heading < ApplicationRecord
   DateHeadings = Struct.new(:date, :headings)
 
   def self.agenda_dates(end_date = 2.weeks.from_now)
-    headings = dates_until(end_date).not_todo_or_done
+    headings = includes(:state, :notebook).dates_until(end_date).not_todo_or_done
     days = (DateTime.now..end_date).to_a
     headings_by_date = days.map do |day|
       day_headings = headings.filter do |heading|
