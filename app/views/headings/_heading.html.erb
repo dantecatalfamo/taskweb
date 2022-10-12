@@ -56,7 +56,7 @@
           </div>
         <% end %>
 
-        <%= render "heading_properties/heading_properties", heading: heading %>
+        <%= render "heading_properties/heading_properties", heading: heading, cached: true %>
 
         <p style="white-space: pre-wrap"><%= raw process_org_body(heading.body) %></p>
 
