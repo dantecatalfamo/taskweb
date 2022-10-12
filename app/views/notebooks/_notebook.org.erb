@@ -1,3 +1,4 @@
 #+TITLE: <%= @notebook.title %>
 
-<%= render @notebook.headings.top_level -%>
+<% headings = @notebook.headings.includes(:state, :properties) %>
+<%= render collection: headings.top_level, partial: "headings/heading", cached: true -%>

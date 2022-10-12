@@ -1,2 +1,2 @@
 <%== org_heading_render(heading) %>
-<%= render heading.children -%>
+<%= render collection: heading.children, partial: "headings/heading", cached: true -%>
