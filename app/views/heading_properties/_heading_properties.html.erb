@@ -6,8 +6,8 @@
         <tbody>
           <%= render partial: "heading_properties/heading_property", collection: heading.properties %>
           <tr>
-            <td><%= form.text_field :key, class: 'font-monospace' %></td>
-            <td><%= form.text_field :value, class: 'font-monospace', autocomplete: 'off' %></td>
+            <td><%= form.text_field :key, class: 'font-monospace', placeholder: 'Key', size: 12 %></td>
+            <td><%= form.text_field :value, class: 'font-monospace', placeholder: 'Value', autocomplete: 'off', size: 15 %></td>
           </tr>
           <%= form.hidden_field :heading_id %>
           <%= form.submit style: 'display: none' %>

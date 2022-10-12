@@ -1,6 +1,6 @@
 <tr id="<%= dom_id heading_property %>">
-  <td class="font-monospace ps-0"><%= heading_property.key.upcase %></td>
-  <td class="font-monospace ps-2"><%= heading_property.value %></td>
+  <td class="font-monospace ps-0 heading_property_key"><%= heading_property.key.upcase %></td>
+  <td class="font-monospace"><%= heading_property.value %></td>
   <td>
     <%= link_to '<i class="bi bi-x-lg"></i>'.html_safe, heading_property, class: "text-danger",
           data: {

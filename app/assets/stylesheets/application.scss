@@ -22,7 +22,7 @@
     font-size: 15px;
   }
 
-  summary, td:nth-child(1), span {
+  summary, .heading_property_key, span {
     &:after {
       content: ':';
       position: relative;
