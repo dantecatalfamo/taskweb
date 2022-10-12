@@ -1,19 +1,19 @@
 <div id="<%= "#{dom_id(heading)}_properties" %>" >
   <details class="heading-properties mb-1" <%= "open" if local_assigns[:open] %> >
     <summary class="list-unstyled font-monospace">PROPERTIES</summary>
-    <table>
-      <tbody>
-        <%= render partial: "heading_properties/heading_property", collection: heading.properties %>
-        <%= form_with(model: heading.properties.new, url: heading_heading_properties_path(heading)) do |form| %>
+    <%= form_with(model: HeadingProperty.new(heading: heading), url: heading_heading_properties_path(heading)) do |form| %>
+      <table>
+        <tbody>
+          <%= render partial: "heading_properties/heading_property", collection: heading.properties %>
           <tr>
             <td><%= form.text_field :key, class: 'font-monospace' %></td>
             <td><%= form.text_field :value, class: 'font-monospace', autocomplete: 'off' %></td>
           </tr>
           <%= form.hidden_field :heading_id %>
           <%= form.submit style: 'display: none' %>
-        <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    <% end %>
     <span class="font-monospace">END</span>
   </details>
 </div>
