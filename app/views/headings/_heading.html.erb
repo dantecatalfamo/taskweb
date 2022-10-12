@@ -61,7 +61,7 @@
         <p style="white-space: pre-wrap"><%= raw process_org_body(heading.body) %></p>
 
         <% unless local_assigns[:shallow] %>
-          <%= render partial: "headings/heading", collection: heading.children %>
+          <%= render partial: "headings/heading", collection: heading.children, cached: true %>
 
           <%= form_with(model: Heading.new(parent_id: heading.id), html: { class: 'd-flex' }) do |form| %>
             <%= form.text_field :title, placeholder: '+', style: 'border: none', class: "mb-1 ms-1 me-1 flex-grow-1", autocomplete: 'off' %>
