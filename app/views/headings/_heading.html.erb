@@ -7,7 +7,7 @@
     <details data-heading-target="details" data-action="heading#toggle">
       <summary>
         <strong>
-          <span style="color: <%= heading.state&.color || 'inherit' %>" data-heading-target="state" data-action="click->heading#showStateSelector">
+          <span style="color: <%= heading.state&.color || 'inherit' %>" class="<%= 'text-muted' if heading.state&.done %>" data-heading-target="state" data-action="click->heading#showStateSelector">
             <% if heading.state %>
               <%= heading.state.name %>
             <% else %>
