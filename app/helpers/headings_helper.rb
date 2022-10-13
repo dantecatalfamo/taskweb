@@ -3,7 +3,11 @@ module HeadingsHelper
     /#{MARKUP_BEGIN_REGEX}#{character_regex}(#{MARKUP_INTERNAL_REGEX})#{character_regex}#{MARKUP_END_REGEX}/
   end
 
-  SRC_BLOCK_REGEX = /#\+BEGIN_SRC\s*([^\n]*)\n(.*?)#\+END_SRC/mi
+  def self.create_block_regex(block_name)
+    /#\+BEGIN_#{block_name}(.*?)\n(.*?)#\+END_#{block_name}/mi
+  end
+
+  SRC_BLOCK_REGEX = create_block_regex('SRC')
 
   MARKUP_BEGIN_REGEX = /(?<=\s|\A)/
   MARKUP_INTERNAL_REGEX = /(?=\S).+?(?<=\S)/m
@@ -93,8 +97,9 @@ module HeadingsHelper
     return unless text
 
     escape_once(text).gsub(SRC_BLOCK_REGEX) do
-      tag.pre(class: 'border py-2 rounded bg-light') do
-        tag.code(Regexp.last_match(2), class: ("language-#{Regexp.last_match(1)}" if Regexp.last_match(1).present?))
+      tag.pre(class: 'border p-2 rounded bg-light') do
+        tag.code(Regexp.last_match(2),
+                 class: ("language-#{Regexp.last_match(1).strip}" if Regexp.last_match(1).present?))
       end
     end.gsub(LINK_REGEX) do
       match = Regexp.last_match
