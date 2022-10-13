@@ -5,6 +5,6 @@ class HeadingProperty < ApplicationRecord
   before_save :upcase_key
 
   def upcase_key
-    key.upcase!
+    key.gsub!(/\s+/, '_').upcase!
   end
 end
