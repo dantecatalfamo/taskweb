@@ -8,7 +8,7 @@
             <td class="font-monospace ps-0 heading_property_key">ID</td>
             <td class="font-monospace"><%= heading.org_id %></td>
           </tr>
-          <%= render partial: "heading_properties/heading_property", collection: heading.properties %>
+          <%= render partial: "heading_properties/heading_property", collection: heading.properties.order(:key) %>
           <tr>
             <td><%= form.text_field :key, class: 'font-monospace', placeholder: 'Key', size: 12 %></td>
             <td><%= form.text_field :value, class: 'font-monospace', placeholder: 'Value', autocomplete: 'off', size: 15 %></td>
