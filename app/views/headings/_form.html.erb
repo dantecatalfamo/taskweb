@@ -1,5 +1,4 @@
-<div class="mb-3" style="width: 350px">
-  
+<div class="mb-3" style="max-width: 450px">
   <%= form_with(model: heading) do |form| %>
     <% if heading.errors.any? %>
       <div style="color: red">
@@ -29,7 +28,7 @@
     </div>
 
     <div class="row mb-2">
-      <div class="col">
+      <div class="col pe-0">
         <%= form.label :deadline, class: "col-form-label" %>
       </div>
       <div class="col-auto">
@@ -38,7 +37,7 @@
     </div>
 
     <div class="row mb-2">
-      <div class="col">
+      <div class="col pe-0">
         <%= form.label :scheduled, class: "col-form-label" %>
       </div>
       <div class="col-auto">
