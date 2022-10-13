@@ -20,6 +20,7 @@ class HeadingPropertiesController < ApplicationController
   # POST /heading_properties or /heading_properties.json
   def create
     @heading_property = HeadingProperty.new(heading_property_params)
+    @heading_property.user = current_user
     @heading = @heading_property.heading
 
     respond_to do |format|
@@ -66,7 +67,7 @@ class HeadingPropertiesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_heading_property
-    @heading_property = HeadingProperty.find(params[:id])
+    @heading_property = HeadingProperty.find_by!(id: params[:id], user: current_user)
   end
 
   # Only allow a list of trusted parameters through.

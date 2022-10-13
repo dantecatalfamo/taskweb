@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_052227) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_13_033836) do
   create_table "heading_properties", force: :cascade do |t|
     t.integer "heading_id", null: false
     t.string "key"
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["heading_id"], name: "index_heading_properties_on_heading_id"
+    t.index ["user_id"], name: "index_heading_properties_on_user_id"
   end
 
   create_table "heading_states", force: :cascade do |t|
@@ -71,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_052227) do
   end
 
   add_foreign_key "heading_properties", "headings"
+  add_foreign_key "heading_properties", "users"
   add_foreign_key "heading_states", "users"
   add_foreign_key "headings", "notebooks"
   add_foreign_key "headings", "users"
