@@ -1,4 +1,5 @@
 #+TITLE: <%= @notebook.title %>
+#+AUTHOR: <%= @notebook.user.username %>
 
 <% headings = @notebook.headings.includes(:state, :properties) %>
 <%= render collection: headings.top_level, partial: "headings/heading", cached: true -%>
