@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
     return unless session[:user_id]
 
     @current_user ||= User.find(session[:user_id])
+  rescue ActiveRecord::RecordNotFound
+    reset_session
   end
 
   def logged_in?
