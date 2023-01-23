@@ -1,7 +1,7 @@
 <%= turbo_frame_tag heading do %>
   <div data-controller="heading"
        data-heading-id-value="<%= heading.id %>"
-       class="pb-2 ps-2 pe-1 mb-2"
+       class="pb-1 ps-2 pe-1 mb-1"
        style="border-left: 2px solid <%= depth_color(heading.depth) %>"
   >
     <details data-heading-target="details" data-action="heading#toggle">
@@ -58,7 +58,7 @@
 
         <%= render "heading_properties/heading_properties", heading: heading, cached: true %>
 
-        <p style="white-space: pre-wrap"><%= raw process_org_body(heading.body) %></p>
+        <p style="white-space: pre-wrap" class="mb-1"><%= raw process_org_body(heading.body) %></p>
 
         <% unless local_assigns[:shallow] %>
           <%= render partial: "headings/heading", collection: heading.children, cached: true %>
