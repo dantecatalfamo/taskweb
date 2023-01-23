@@ -1,7 +1,7 @@
 <h1>Editing heading</h1>
 
 <%= turbo_frame_tag @heading do %>
-  <div class="py-2 ps-2 pe-1 mb-2 rounded-start" style="border-left: 3px solid <%= depth_color(@heading.depth) %>">
+  <div class="py-1 ps-2 pe-1 mb-1" style="border-left: 2px solid <%= depth_color(@heading.depth) %>">
     <%= render "form", heading: @heading %>
     <% @heading.children.each do |child| %>
       <%= render child %>
