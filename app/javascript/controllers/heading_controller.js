@@ -4,6 +4,11 @@ export default class extends Controller {
   static targets = ['details', 'state', 'stateSelection', 'options']
   static values = { id: Number }
 
+  async getHeadingStates() {
+    const response = await fetch('/heading_states.json');
+    return await response.json();
+  }
+
   getData() {
     return JSON.parse(localStorage.getItem(`heading_${this.idValue}`)) || {};
   }
@@ -12,11 +17,22 @@ export default class extends Controller {
     localStorage.setItem(`heading_${this.idValue}`, JSON.stringify(data));
   }
 
-  showStateSelector(event) {
+  async showStateSelector(event) {
     event.preventDefault();
     this.stateTarget.style.display = 'none';
     this.stateSelectionTarget.style.display = 'inline';
     this.hideStateSelectorTimeout = window.setTimeout(() => this.hideStateSelector(), 10_000);
+    const states = await this.getHeadingStates();
+    const select = this.stateSelectionTarget.querySelector('select');
+    const selected = select.value;
+    const options = states.map(state => {
+      const option = document.createElement('option');
+      option.value = state.id;
+      option.innerText = state.name;
+      return option;
+    });
+    select.replaceChildren(...options);
+    select.value = selected;
   }
 
   hideStateSelector() {
